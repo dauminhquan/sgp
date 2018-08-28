@@ -9,8 +9,3 @@ export default {
   }
 }
 </script>
-<style>
-    .xin-chao{
-        color: red;
-    }
-</style>

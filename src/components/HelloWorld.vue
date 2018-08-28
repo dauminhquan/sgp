@@ -927,18 +927,13 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- /tabs content -->
 
                 </div>
-                <!-- /my messages -->
 
             </div>
         </div>
-        <!-- /dashboard content -->
 
-        <!-- Footer -->
         <slot></slot>
-        <!-- /footer -->
 
     </div>
 </template>
@@ -951,13 +946,9 @@ export default {
   },
   data () {
     return {
-      dateChoose: null
+      dateChoose: null,
+      dsadsadsa: '123'
     }
   }
 }
 </script>
-<style>
-    .xin-chao{
-        color: red;
-    }
-</style>

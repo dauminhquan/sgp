@@ -18800,7 +18800,7 @@ thead .htCollapseButton:after {
 .chat-list .media-content {
   position: relative;
   padding: 10px 12px;
-  width: auto;
+  max-width: 90%;
   border-radius: 3px;
   display: inline-block;
 }
@@ -20056,5 +20056,22 @@ label.display-block {
   .panel-toolbar-inbox {
     padding-top: 10px;
     padding-bottom: 10px;
+  }
+}
+.message-more-right{
+  float: right;
+  display: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.message-more-left{
+  float: left;
+  display: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+@media (min-width: 415px) {
+  .chat-list .media-content {
+    max-width: 95%;
   }
 }
