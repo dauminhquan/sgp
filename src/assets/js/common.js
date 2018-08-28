@@ -1,0 +1,5 @@
+window.$ = window.jQuery = window.jquery = require('jquery')
+require('bootstrap')
+require('block-ui')
+require('pace')
+require('./core/app')
