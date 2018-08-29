@@ -285,13 +285,6 @@ function init () {
       $('body').toggleClass('sidebar-main-hidden')
     })
 
-    // Toggle second sidebar in Dual Sidebar
-    $(document).on('click', '.sidebar-secondary-hide', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-secondary-hidden')
-    })
-
-    // Hide detached sidebar
     $(document).on('click', '.sidebar-detached-hide', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-detached-hidden')

@@ -272,7 +272,7 @@
                                     <li>
                                         <a :href="null"><i class="icon-copy"></i> <span>Layouts</span></a>
                                         <ul>
-                                            <li><a href="../../../layout_1/LTR/index.html" id="layout1">Layout 1</a></li>
+                                            <li><router-link :to="{name : 'chat-team'}">Layout 1</router-link></li>
                                             <li><a href="index.html" id="layout2">Layout 2 <span class="label bg-warning-400">Current</span></a></li>
                                             <li><a href="../../../layout_3/LTR/index.html" id="layout3">Layout 3</a></li>
                                             <li><a href="../../../layout_4/LTR/index.html" id="layout4">Layout 4</a></li>
@@ -1064,7 +1064,6 @@ export default {
       if (arr.indexOf(name) === -1) {
         element.className += ' ' + name
       } else {
-        console.log(element.className)
         element.className = element.className.replace(/ sidebar-xs/g, '')
         element.className = element.className.replace(/sidebar-xs/g, '')
         element.className = element.className.replace(/sidebar-xs /g, '')
