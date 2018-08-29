@@ -27,14 +27,14 @@
 
                         <div class="media-body">
                             <div class="media-content">Below mounted advantageous spread yikes bat stubbornly crud a and a excepting</div>
-                            <span class="media-annotation display-block mt-10">Mon, 9:54 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Mon, 9:54 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
                     <li class="media reversed">
                         <div class="media-body">
                             <div class="media-content">Far squid and that hello fidgeted and when. As this oh darn but slapped casually husky sheared that cardinal hugely one and some unnecessary factiously hedgehog a feeling one rudely much but one owing sympathetic regardless more astonishing evasive tasteful much.</div>
-                            <span class="media-annotation display-block mt-10">Mon, 10:24 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Mon, 10:24 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
 
                         <div class="media-right">
@@ -53,14 +53,14 @@
 
                         <div class="media-body">
                             <div class="media-content">Darn over sour then cynically less roadrunner up some cast buoyant. Macaw krill when and upon less contrary warthog jeez some koala less since therefore minimal.</div>
-                            <span class="media-annotation display-block mt-10">Mon, 10:56 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Mon, 10:56 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
                     <li class="media reversed">
                         <div class="media-body">
                             <div class="media-content">Some upset impious a and submissive when far crane the belched coquettishly. More the puerile dove wherever</div>
-                            <span class="media-annotation display-block mt-10">Mon, 11:29 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Mon, 11:29 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
 
                         <div class="media-right">
@@ -83,7 +83,7 @@
 
                         <div class="media-body">
                             <div class="media-content">Regardless equitably hello heron glum cassowary jocosely before reliably a jeepers wholehearted shuddered more that some where far by koala.</div>
-                            <span class="media-annotation display-block mt-10">Tue, 6:40 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Tue, 6:40 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
@@ -96,14 +96,14 @@
 
                         <div class="media-body">
                             <div class="media-content">Crud reran and while much withdrew ardent much crab hugely met dizzily that more jeez gent equivalent unsafely far one hesitant so therefore.</div>
-                            <span class="media-annotation display-block mt-10">Tue, 10:28 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Tue, 10:28 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
                     <li class="media reversed">
                         <div class="media-body">
                             <div class="media-content">Thus superb the tapir the wallaby blank frog execrably much since dalmatian by in hot. Uninspiringly arose mounted stared one curt safe</div>
-                            <span class="media-annotation display-block mt-10">Tue, 8:12 am <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Tue, 8:12 am <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
 
                         <div class="media-right">
@@ -126,7 +126,7 @@
 
                         <div class="media-body">
                             <div class="media-content">Tolerantly some understood this stubbornly after snarlingly frog far added insect into snorted more auspiciously heedless drunkenly jeez foolhardy oh.</div>
-                            <span class="media-annotation display-block mt-10">Wed, 4:20 pm <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">Wed, 4:20 pm <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
@@ -134,21 +134,21 @@
                         <div class="media-body">
                             <div class="message-more-left">
                                 <div class="dropdown">
-                                    <span class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="icon-menu"></span>
-                                    </span>
+                                    <div class="dropdown-toggle" data-toggle="dropdown">
+                                        <span class="icon-menu" style="color: #abb6c6"></span>
+                                    </div>
                                     <ul class="dropdown-menu dropdown-menu-left">
-                                        <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
-                                        <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-                                        <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
+                                        <li><a :href="null"><i class="icon-user-lock"></i> Account security</a></li>
+                                        <li><a :href="null"><i class="icon-statistics"></i> Analytics</a></li>
+                                        <li><a :href="null"><i class="icon-accessibility"></i> Accessibility</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                                        <li><a :href="null"><i class="icon-gear"></i> All settings</a></li>
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="media-content">Satisfactorily strenuously while sleazily dear frustratingly insect menially some shook far sardonic badger telepathic much jeepers immature much hey.</div>
-                            <span class="media-annotation display-block mt-10">2 hours ago <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">2 hours ago <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
 
                         <div class="media-right">
@@ -168,9 +168,9 @@
                         <div class="media-body">
                             <div class="media-content">Grunted smirked and grew less but rewound much despite and impressive via alongside out and gosh easy manatee dear ineffective yikes.</div>
                             <div class="message-more-right">
-                                <i class="icon-menu"></i>
+                                <i class="icon-menu" style="color:#abb6c6;"></i>
                             </div>
-                            <span class="media-annotation display-block mt-10">13 minutes ago <a href="#"><i class="icon-pin-alt position-right text-muted"></i></a></span>
+                            <span class="media-annotation display-block mt-10">13 minutes ago <a :href="null"><i class="icon-pin-alt position-right text-muted"></i></a></span>
                         </div>
                     </li>
 
@@ -192,9 +192,12 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <ul class="icons-list icons-list-extended mt-10">
-                            <li><a href="#" data-popup="tooltip" title="Send photo" data-container="body"><i class="icon-file-picture"></i></a></li>
-                            <li><a href="#" data-popup="tooltip" title="Send video" data-container="body"><i class="icon-file-video"></i></a></li>
-                            <li><a href="#" data-popup="tooltip" title="Send file" data-container="body"><i class="icon-file-plus"></i></a></li>
+                            <li><a :href="null" @click="$refs['input-photo'].click()" data-popup="tooltip" title="Send photo" data-container="body"><i class="icon-file-picture"></i></a></li>
+                            <input type="file" ref="input-photo" style="display: none">
+                            <li><a :href="null" @click="$refs['input-video'].click()" data-popup="tooltip" title="Send video" data-container="body"><i class="icon-file-video"></i></a></li>
+                            <input type="file"  ref="input-video" style="display: none">
+                            <li><a :href="null" @click="$refs['input-file'].click()" data-popup="tooltip" title="Send file" data-container="body"><i class="icon-file-plus"></i></a></li>
+                            <input type="file" ref="input-file" style="display: none">
                         </ul>
                     </div>
 
@@ -208,7 +211,9 @@
     </div>
 </template>
 <script>
+import $ from 'jquery'
 export default {
+
   mounted () {
     let element, name, arr
     element = document.body
@@ -217,24 +222,32 @@ export default {
     if (arr.indexOf(name) === -1) {
       element.className += ' ' + name
     }
-
+    let WDWidth = $(window).width()
+    let wt = 50
+    if (WDWidth < 769) {
+      wt = 30
+    }
     $('.media-body').hover(function () {
-      $(this).children('.message-more-left').show()
-      $(this).children('.message-more-right').show()
+      let widthP = $(this).width()
+      let widthC = $(this).children('.media-content').width()
+      let paddingLeft = $(this).children('.media-content').css('padding-left')
+      let paddingRight = $(this).children('.media-content').css('padding-right')
+      $(this).find('.message-more-left').show()
+      $(this).find('.message-more-left').css('margin-left', (widthP - widthC - wt - parseFloat(paddingLeft)) + 'px')
+      $(this).find('.message-more-right').show()
+      $(this).find('.message-more-right').css('margin-right', (widthP - widthC - wt - parseFloat(paddingRight)) + 'px')
     })
     $('.media-body').mouseleave(function () {
-      $(this).children('.message-more-left').hide()
-      $(this).children('.message-more-right').hide()
+      $(this).find('.message-more-left').hide()
+      $(this).find('.message-more-right').hide()
     })
   },
   data () {
     return {
+      a: 'x'
     }
   },
   methods: {
-    showStore: () => {
-
-    }
   }
 }
 </script>

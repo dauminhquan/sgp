@@ -7,7 +7,7 @@
                 <div class="category-title">
                     <span>Search messages</span>
                     <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
+                        <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
@@ -29,24 +29,24 @@
                 <div class="category-title">
                     <span>Navigation</span>
                     <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
+                        <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content no-padding">
                     <ul class="navigation navigation-alt navigation-accordion">
                         <li class="navigation-header">Actions</li>
-                        <li><a href="#"><i class="icon-compose"></i> Compose message</a></li>
-                        <li><a href="#"><i class="icon-collaboration"></i> Conference</a></li>
-                        <li><a href="#"><i class="icon-user-plus"></i> Add users <span class="label label-success">32 online</span></a></li>
-                        <li><a href="#"><i class="icon-users"></i> Create team</a></li>
+                        <li><a :href="null"><i class="icon-compose"></i> Compose message</a></li>
+                        <li><a :href="null"><i class="icon-collaboration"></i> Conference</a></li>
+                        <li><a :href="null"><i class="icon-user-plus"></i> Add users <span class="label label-success">32 online</span></a></li>
+                        <li><a :href="null"><i class="icon-users"></i> Create team</a></li>
                         <li class="navigation-divider"></li>
-                        <li><a href="#"><i class="icon-files-empty"></i> All messages <span class="badge badge-danger">99+</span></a></li>
-                        <li><a href="#"><i class="icon-file-plus"></i> Active discussions <span class="badge badge-default">32</span></a></li>
-                        <li><a href="#"><i class="icon-file-locked"></i> Closed discussions</a></li>
+                        <li><a :href="null"><i class="icon-files-empty"></i> All messages <span class="badge badge-danger">99+</span></a></li>
+                        <li><a :href="null"><i class="icon-file-plus"></i> Active discussions <span class="badge badge-default">32</span></a></li>
+                        <li><a :href="null"><i class="icon-file-locked"></i> Closed discussions</a></li>
                         <li class="navigation-header">Options</li>
-                        <li><a href="#"><i class="icon-reading"></i> Message history</a></li>
-                        <li><a href="#"><i class="icon-cog3"></i> Settings</a></li>
+                        <li><a :href="null"><i class="icon-reading"></i> Message history</a></li>
+                        <li><a :href="null"><i class="icon-cog3"></i> Settings</a></li>
                     </ul>
                 </div>
             </div>
@@ -57,22 +57,22 @@
                 <div class="category-title">
                     <span>new issue</span>
                     <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
+                        <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content">
                     <ul class="media-list">
                         <li class="media">
-                            <div class="media-left"><a href="#" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
+                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
                             <div class="media-body">
-                                <a href="#">Richard Vango</a> has been registered
+                                <a :href="null">Richard Vango</a> has been registered
                                 <div class="media-annotation">4 minutes ago</div>
                             </div>
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><a href="#" class="btn border-slate text-slate btn-flat btn-icon btn-sm btn-rounded"><i class="icon-infinite"></i></a></div>
+                            <div class="media-left"><a :href="null" class="btn border-slate text-slate btn-flat btn-icon btn-sm btn-rounded"><i class="icon-infinite"></i></a></div>
                             <div class="media-body">
                                 Server went offline for monthly maintenance
                                 <div class="media-annotation">36 minutes ago</div>
@@ -80,25 +80,25 @@
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><a href="#" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
+                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
                             <div class="media-body">
-                                <a href="#">Chris Arney</a> has been registered
+                                <a :href="null">Chris Arney</a> has been registered
                                 <div class="media-annotation">2 hours ago</div>
                             </div>
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><a href="#" class="btn border-danger text-danger btn-flat btn-icon btn-sm btn-rounded"><i class="icon-cross2"></i></a></div>
+                            <div class="media-left"><a :href="null" class="btn border-danger text-danger btn-flat btn-icon btn-sm btn-rounded"><i class="icon-cross2"></i></a></div>
                             <div class="media-body">
-                                <a href="#">Chris Arney</a> left main conversation
+                                <a :href="null">Chris Arney</a> left main conversation
                                 <div class="media-annotation">Dec 18, 18:36</div>
                             </div>
                         </li>
 
                         <li class="media">
-                            <div class="media-left"><a href="#" class="btn border-primary text-primary btn-flat btn-icon btn-sm btn-rounded"><i class="icon-plus3"></i></a></div>
+                            <div class="media-left"><a :href="null" class="btn border-primary text-primary btn-flat btn-icon btn-sm btn-rounded"><i class="icon-plus3"></i></a></div>
                             <div class="media-body">
-                                <a href="#">Beatrix Diaz</a> just joined conversation
+                                <a :href="null">Beatrix Diaz</a> just joined conversation
                                 <div class="media-annotation">Dec 12, 05:46</div>
                             </div>
                         </li>
@@ -112,14 +112,14 @@
                 <div class="category-title">
                     <span>Online users</span>
                     <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
+                        <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content no-padding">
                     <ul class="media-list media-list-linked">
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">James Alexander</span>
@@ -132,7 +132,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Jeremy Victorino</span>
@@ -145,7 +145,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <div class="media-heading"><span class="text-semibold">Jordana Mills</span></div>
@@ -158,7 +158,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <div class="media-heading"><span class="text-semibold">William Miles</span></div>
@@ -171,7 +171,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Margo Baker</span>
@@ -184,7 +184,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Beatrix Diaz</span>
@@ -197,7 +197,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Richard Vango</span>
@@ -218,14 +218,14 @@
                 <div class="category-title">
                     <span>Latest messages</span>
                     <ul class="icons-list">
-                        <li><a href="#" data-action="collapse"></a></li>
+                        <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content no-padding">
                     <ul class="media-list media-list-linked">
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Will Samuel</span>
@@ -235,7 +235,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Margo Baker</span>
@@ -245,7 +245,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Monica Smith</span>
@@ -255,7 +255,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">Jordana Mills</span>
@@ -265,7 +265,7 @@
                         </li>
 
                         <li class="media">
-                            <a href="#" class="media-link">
+                            <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
                                 <div class="media-body">
                                     <span class="media-heading text-semibold">John Craving</span>

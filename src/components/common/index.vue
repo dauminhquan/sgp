@@ -15,7 +15,7 @@
                     <li><a class="sidebar-control sidebar-main-toggle hidden-xs" @click="containerHeight"><i class="icon-paragraph-justify3"></i></a></li>
                     <router-view name="control-sidebar-secondary"></router-view>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a :href="null" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-git-compare"></i>
                             <span class="visible-xs-inline-block position-right">Git updates</span>
                             <span class="badge bg-warning-400">9</span>
@@ -25,25 +25,25 @@
                             <div class="dropdown-content-heading">
                                 Git updates
                                 <ul class="icons-list">
-                                    <li><a href="#"><i class="icon-sync"></i></a></li>
+                                    <li><a :href="null"><i class="icon-sync"></i></a></li>
                                 </ul>
                             </div>
 
                             <ul class="media-list dropdown-content-body width-350">
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
+                                        <a :href="null" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
                                     </div>
 
                                     <div class="media-body">
-                                        Drop the IE <a href="#">specific hacks</a> for temporal inputs
+                                        Drop the IE <a :href="null">specific hacks</a> for temporal inputs
                                         <div class="media-annotation">4 minutes ago</div>
                                     </div>
                                 </li>
 
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="#" class="btn border-warning text-warning btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-commit"></i></a>
+                                        <a :href="null" class="btn border-warning text-warning btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-commit"></i></a>
                                     </div>
 
                                     <div class="media-body">
@@ -54,29 +54,29 @@
 
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="#" class="btn border-info text-info btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-branch"></i></a>
+                                        <a :href="null" class="btn border-info text-info btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-branch"></i></a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">Chris Arney</a> created a new <span class="text-semibold">Design</span> branch
+                                        <a :href="null">Chris Arney</a> created a new <span class="text-semibold">Design</span> branch
                                         <div class="media-annotation">2 hours ago</div>
                                     </div>
                                 </li>
 
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="#" class="btn border-success text-success btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-merge"></i></a>
+                                        <a :href="null" class="btn border-success text-success btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-merge"></i></a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">Eugene Kopyov</a> merged <span class="text-semibold">Master</span> and <span class="text-semibold">Dev</span> branches
+                                        <a :href="null">Eugene Kopyov</a> merged <span class="text-semibold">Master</span> and <span class="text-semibold">Dev</span> branches
                                         <div class="media-annotation">Dec 18, 18:36</div>
                                     </div>
                                 </li>
 
                                 <li class="media">
                                     <div class="media-left">
-                                        <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
+                                        <a :href="null" class="btn border-primary text-primary btn-flat btn-rounded btn-icon btn-sm"><i class="icon-git-pull-request"></i></a>
                                     </div>
 
                                     <div class="media-body">
@@ -87,7 +87,7 @@
                             </ul>
 
                             <div class="dropdown-content-footer">
-                                <a href="#" data-popup="tooltip" title="All activity"><i class="icon-menu display-block"></i></a>
+                                <a :href="null" data-popup="tooltip" title="All activity"><i class="icon-menu display-block"></i></a>
                             </div>
                         </div>
                     </li>
@@ -113,7 +113,7 @@
                     </li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a :href="null" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-bubbles4"></i>
                             <span class="visible-xs-inline-block position-right">Messages</span>
                             <span class="badge bg-warning-400">2</span>
@@ -123,7 +123,7 @@
                             <div class="dropdown-content-heading">
                                 Messages
                                 <ul class="icons-list">
-                                    <li><a href="#"><i class="icon-compose"></i></a></li>
+                                    <li><a :href="null"><i class="icon-compose"></i></a></li>
                                 </ul>
                             </div>
 
@@ -135,7 +135,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="media-heading">
+                                        <a :href="null" class="media-heading">
                                             <span class="text-semibold">James Alexander</span>
                                             <span class="media-annotation pull-right">04:58</span>
                                         </a>
@@ -151,7 +151,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="media-heading">
+                                        <a :href="null" class="media-heading">
                                             <span class="text-semibold">Margo Baker</span>
                                             <span class="media-annotation pull-right">12:16</span>
                                         </a>
@@ -163,7 +163,7 @@
                                 <li class="media">
                                     <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                                     <div class="media-body">
-                                        <a href="#" class="media-heading">
+                                        <a :href="null" class="media-heading">
                                             <span class="text-semibold">Jeremy Victorino</span>
                                             <span class="media-annotation pull-right">22:48</span>
                                         </a>
@@ -175,7 +175,7 @@
                                 <li class="media">
                                     <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                                     <div class="media-body">
-                                        <a href="#" class="media-heading">
+                                        <a :href="null" class="media-heading">
                                             <span class="text-semibold">Beatrix Diaz</span>
                                             <span class="media-annotation pull-right">Tue</span>
                                         </a>
@@ -187,7 +187,7 @@
                                 <li class="media">
                                     <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></div>
                                     <div class="media-body">
-                                        <a href="#" class="media-heading">
+                                        <a :href="null" class="media-heading">
                                             <span class="text-semibold">Richard Vango</span>
                                             <span class="media-annotation pull-right">Mon</span>
                                         </a>
@@ -198,7 +198,7 @@
                             </ul>
 
                             <div class="dropdown-content-footer">
-                                <a href="#" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
+                                <a :href="null" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
                             </div>
                         </div>
                     </li>
@@ -211,12 +211,12 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                            <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
-                            <li><a href="#"><span class="badge bg-teal-400 pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+                            <li><a :href="null"><i class="icon-user-plus"></i> My profile</a></li>
+                            <li><a :href="null"><i class="icon-coins"></i> My balance</a></li>
+                            <li><a :href="null"><span class="badge bg-teal-400 pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
                             <li class="divider"></li>
-                            <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
-                            <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+                            <li><a :href="null"><i class="icon-cog5"></i> Account settings</a></li>
+                            <li><a :href="null"><i class="icon-switch2"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -231,7 +231,7 @@
                         <div class="sidebar-user">
                             <div class="category-content">
                                 <div class="media">
-                                    <a href="#" class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
+                                    <a :href="null" class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle img-sm" alt=""></a>
                                     <div class="media-body">
                                         <span class="media-heading text-semibold">Victoria Baker</span>
                                         <div class="text-size-mini text-muted">
@@ -242,7 +242,7 @@
                                     <div class="media-right media-middle">
                                         <ul class="icons-list">
                                             <li>
-                                                <a href="#"><i class="icon-cog3"></i></a>
+                                                <a :href="null"><i class="icon-cog3"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -255,7 +255,7 @@
                                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                     <li class="active"><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                                     <li>
-                                        <a href="#"><i class="icon-stack2"></i> <span>Page layouts</span></a>
+                                        <a :href="null"><i class="icon-stack2"></i> <span>Page layouts</span></a>
                                         <ul>
                                             <li><a href="layout_navbar_fixed.html">Fixed navbar</a></li>
                                             <li><a href="layout_navbar_sidebar_fixed.html">Fixed navbar &amp; sidebar</a></li>
@@ -270,7 +270,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-copy"></i> <span>Layouts</span></a>
+                                        <a :href="null"><i class="icon-copy"></i> <span>Layouts</span></a>
                                         <ul>
                                             <li><a href="../../../layout_1/LTR/index.html" id="layout1">Layout 1</a></li>
                                             <li><a href="index.html" id="layout2">Layout 2 <span class="label bg-warning-400">Current</span></a></li>
@@ -281,7 +281,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-droplet2"></i> <span>Color system</span></a>
+                                        <a :href="null"><i class="icon-droplet2"></i> <span>Color system</span></a>
                                         <ul>
                                             <li><a href="colors_primary.html">Primary palette</a></li>
                                             <li><a href="colors_danger.html">Danger palette</a></li>
@@ -303,13 +303,13 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-stack"></i> <span>Starter kit</span></a>
+                                        <a :href="null"><i class="icon-stack"></i> <span>Starter kit</span></a>
                                         <ul>
                                             <li><a href="starters/horizontal_nav.html">Horizontal navigation</a></li>
                                             <li><a href="starters/1_col.html">1 column</a></li>
                                             <li><a href="starters/2_col.html">2 columns</a></li>
                                             <li>
-                                                <a href="#">3 columns</a>
+                                                <a :href="null">3 columns</a>
                                                 <ul>
                                                     <li><a href="starters/3_col_dual.html">Dual sidebars</a></li>
                                                     <li><a href="starters/3_col_double.html">Double sidebars</a></li>
@@ -317,7 +317,7 @@
                                             </li>
                                             <li><a href="starters/4_col.html">4 columns</a></li>
                                             <li>
-                                                <a href="#">Detached layout</a>
+                                                <a :href="null">Detached layout</a>
                                                 <ul>
                                                     <li><a href="starters/detached_left.html">Left sidebar</a></li>
                                                     <li><a href="starters/detached_right.html">Right sidebar</a></li>
@@ -339,7 +339,7 @@
                                     <!-- Forms -->
                                     <li class="navigation-header"><span>Forms</span> <i class="icon-menu" title="Forms"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-pencil3"></i> <span>Form components</span></a>
+                                        <a :href="null"><i class="icon-pencil3"></i> <span>Form components</span></a>
                                         <ul>
                                             <li><a href="form_inputs_basic.html">Basic inputs</a></li>
                                             <li><a href="form_checkboxes_radios.html">Checkboxes &amp; radios</a></li>
@@ -347,7 +347,7 @@
                                             <li><a href="form_controls_extended.html">Extended controls</a></li>
                                             <li><a href="form_floating_labels.html">Floating labels</a></li>
                                             <li>
-                                                <a href="#">Selects</a>
+                                                <a :href="null">Selects</a>
                                                 <ul>
                                                     <li><a href="form_select2.html">Select2 selects</a></li>
                                                     <li><a href="form_multiselect.html">Bootstrap multiselect</a></li>
@@ -363,7 +363,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-file-css"></i> <span>JSON forms</span></a>
+                                        <a :href="null"><i class="icon-file-css"></i> <span>JSON forms</span></a>
                                         <ul>
                                             <li><a href="alpaca_basic.html">Basic inputs</a></li>
                                             <li><a href="alpaca_advanced.html">Advanced inputs</a></li>
@@ -371,7 +371,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-footprint"></i> <span>Wizards</span></a>
+                                        <a :href="null"><i class="icon-footprint"></i> <span>Wizards</span></a>
                                         <ul>
                                             <li><a href="wizard_steps.html">Steps wizard</a></li>
                                             <li><a href="wizard_form.html">Form wizard</a></li>
@@ -379,7 +379,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-spell-check"></i> <span>Editors</span></a>
+                                        <a :href="null"><i class="icon-spell-check"></i> <span>Editors</span></a>
                                         <ul>
                                             <li><a href="editor_summernote.html">Summernote editor</a></li>
                                             <li><a href="editor_ckeditor.html">CKEditor</a></li>
@@ -388,7 +388,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-select2"></i> <span>Pickers</span></a>
+                                        <a :href="null"><i class="icon-select2"></i> <span>Pickers</span></a>
                                         <ul>
                                             <li><a href="picker_date.html">Date &amp; time pickers</a></li>
                                             <li><a href="picker_color.html">Color pickers</a></li>
@@ -396,7 +396,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-insert-template"></i> <span>Form layouts</span></a>
+                                        <a :href="null"><i class="icon-insert-template"></i> <span>Form layouts</span></a>
                                         <ul>
                                             <li><a href="form_layout_vertical.html">Vertical form</a></li>
                                             <li><a href="form_layout_horizontal.html">Horizontal form</a></li>
@@ -407,7 +407,7 @@
                                     <!-- Appearance -->
                                     <li class="navigation-header"><span>Appearance</span> <i class="icon-menu" title="Appearance"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-grid"></i> <span>Components</span></a>
+                                        <a :href="null"><i class="icon-grid"></i> <span>Components</span></a>
                                         <ul>
                                             <li><a href="components_modals.html">Modals</a></li>
                                             <li><a href="components_dropdowns.html">Dropdown menus</a></li>
@@ -430,7 +430,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-puzzle2"></i> <span>Content appearance</span></a>
+                                        <a :href="null"><i class="icon-puzzle2"></i> <span>Content appearance</span></a>
                                         <ul>
                                             <li><a href="appearance_content_panels.html">Content panels</a></li>
                                             <li><a href="appearance_panel_heading.html">Panel heading elements</a></li>
@@ -444,7 +444,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-gift"></i> <span>Extra components</span></a>
+                                        <a :href="null"><i class="icon-gift"></i> <span>Extra components</span></a>
                                         <ul>
                                             <li><a href="extra_sliders_noui.html">NoUI sliders</a></li>
                                             <li><a href="extra_sliders_ion.html">Ion range sliders</a></li>
@@ -456,11 +456,11 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-spinner2 spinner"></i> <span>Animations</span></a>
+                                        <a :href="null"><i class="icon-spinner2 spinner"></i> <span>Animations</span></a>
                                         <ul>
                                             <li><a href="animations_css3.html">CSS3 animations</a></li>
                                             <li>
-                                                <a href="#">Velocity animations</a>
+                                                <a :href="null">Velocity animations</a>
                                                 <ul>
                                                     <li><a href="animations_velocity_basic.html">Basic usage</a></li>
                                                     <li><a href="animations_velocity_ui.html">UI pack effects</a></li>
@@ -470,7 +470,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-thumbs-up2"></i> <span>Icons</span></a>
+                                        <a :href="null"><i class="icon-thumbs-up2"></i> <span>Icons</span></a>
                                         <ul>
                                             <li><a href="icons_glyphicons.html">Glyphicons</a></li>
                                             <li><a href="icons_icomoon.html">Icomoon</a></li>
@@ -482,14 +482,14 @@
                                     <!-- Layout -->
                                     <li class="navigation-header"><span>Layout</span> <i class="icon-menu" title="Layout options"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-indent-decrease2"></i> <span>Sidebars</span></a>
+                                        <a :href="null"><i class="icon-indent-decrease2"></i> <span>Sidebars</span></a>
                                         <ul>
                                             <li><a href="sidebar_default_collapse.html">Default collapsible</a></li>
                                             <li><a href="sidebar_default_hide.html">Default hideable</a></li>
                                             <li><a href="sidebar_mini_collapse.html">Mini collapsible</a></li>
                                             <li><a href="sidebar_mini_hide.html">Mini hideable</a></li>
                                             <li>
-                                                <a href="#">Dual sidebar</a>
+                                                <a :href="null">Dual sidebar</a>
                                                 <ul>
                                                     <li><a href="sidebar_dual.html">Dual sidebar</a></li>
                                                     <li><a href="sidebar_dual_double_collapse.html">Dual double collapse</a></li>
@@ -498,7 +498,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Double sidebar</a>
+                                                <a :href="null">Double sidebar</a>
                                                 <ul>
                                                     <li><a href="sidebar_double_collapse.html">Collapse main sidebar</a></li>
                                                     <li><a href="sidebar_double_hide.html">Hide main sidebar</a></li>
@@ -508,7 +508,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Detached sidebar</a>
+                                                <a :href="null">Detached sidebar</a>
                                                 <ul>
                                                     <li><a href="sidebar_detached_left.html">Left position</a></li>
                                                     <li><a href="sidebar_detached_right.html">Right position</a></li>
@@ -523,7 +523,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-sort"></i> <span>Vertical navigation</span></a>
+                                        <a :href="null"><i class="icon-sort"></i> <span>Vertical navigation</span></a>
                                         <ul>
                                             <li><a href="navigation_vertical_collapsible.html">Collapsible menu</a></li>
                                             <li><a href="navigation_vertical_accordion.html">Accordion menu</a></li>
@@ -535,7 +535,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-transmission"></i> <span>Horizontal navigation</span></a>
+                                        <a :href="null"><i class="icon-transmission"></i> <span>Horizontal navigation</span></a>
                                         <ul>
                                             <li><a href="navigation_horizontal_click.html">Submenu on click</a></li>
                                             <li><a href="navigation_horizontal_hover.html">Submenu on hover</a></li>
@@ -546,11 +546,11 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-menu3"></i> <span>Navbars</span></a>
+                                        <a :href="null"><i class="icon-menu3"></i> <span>Navbars</span></a>
                                         <ul>
                                             <li><a href="navbar_single.html">Single navbar</a></li>
                                             <li>
-                                                <a href="#">Multiple navbars</a>
+                                                <a :href="null">Multiple navbars</a>
                                                 <ul>
                                                     <li><a href="navbar_multiple_navbar_navbar.html">Navbar + navbar</a></li>
                                                     <li><a href="navbar_multiple_navbar_header.html">Navbar + header</a></li>
@@ -565,24 +565,24 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-tree5"></i> <span>Menu levels</span></a>
+                                        <a :href="null"><i class="icon-tree5"></i> <span>Menu levels</span></a>
                                         <ul>
-                                            <li><a href="#"><i class="icon-IE"></i> Second level</a></li>
+                                            <li><a :href="null"><i class="icon-IE"></i> Second level</a></li>
                                             <li>
-                                                <a href="#"><i class="icon-firefox"></i> Second level with child</a>
+                                                <a :href="null"><i class="icon-firefox"></i> Second level with child</a>
                                                 <ul>
-                                                    <li><a href="#"><i class="icon-android"></i> Third level</a></li>
+                                                    <li><a :href="null"><i class="icon-android"></i> Third level</a></li>
                                                     <li>
-                                                        <a href="#"><i class="icon-apple2"></i> Third level with child</a>
+                                                        <a :href="null"><i class="icon-apple2"></i> Third level with child</a>
                                                         <ul>
-                                                            <li><a href="#"><i class="icon-html5"></i> Fourth level</a></li>
-                                                            <li><a href="#"><i class="icon-css3"></i> Fourth level</a></li>
+                                                            <li><a :href="null"><i class="icon-html5"></i> Fourth level</a></li>
+                                                            <li><a :href="null"><i class="icon-css3"></i> Fourth level</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="#"><i class="icon-windows"></i> Third level</a></li>
+                                                    <li><a :href="null"><i class="icon-windows"></i> Third level</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="#"><i class="icon-chrome"></i> Second level</a></li>
+                                            <li><a :href="null"><i class="icon-chrome"></i> Second level</a></li>
                                         </ul>
                                     </li>
                                     <!-- /layout -->
@@ -590,7 +590,7 @@
                                     <!-- Data visualization -->
                                     <li class="navigation-header"><span>Data visualization</span> <i class="icon-menu" title="Data visualization"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-graph"></i> <span>Echarts library</span></a>
+                                        <a :href="null"><i class="icon-graph"></i> <span>Echarts library</span></a>
                                         <ul>
                                             <li><a href="echarts_lines_areas.html">Lines and areas</a></li>
                                             <li><a href="echarts_columns_waterfalls.html">Columns and waterfalls</a></li>
@@ -603,7 +603,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-statistics"></i> <span>D3 library</span></a>
+                                        <a :href="null"><i class="icon-statistics"></i> <span>D3 library</span></a>
                                         <ul>
                                             <li><a href="d3_lines_basic.html">Simple lines</a></li>
                                             <li><a href="d3_lines_advanced.html">Advanced lines</a></li>
@@ -616,31 +616,31 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-stats-dots"></i> <span>Dimple library</span></a>
+                                        <a :href="null"><i class="icon-stats-dots"></i> <span>Dimple library</span></a>
                                         <ul>
                                             <li>
-                                                <a href="#">Line charts</a>
+                                                <a :href="null">Line charts</a>
                                                 <ul>
                                                     <li><a href="dimple_lines_horizontal.html">Horizontal orientation</a></li>
                                                     <li><a href="dimple_lines_vertical.html">Vertical orientation</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Bar charts</a>
+                                                <a :href="null">Bar charts</a>
                                                 <ul>
                                                     <li><a href="dimple_bars_horizontal.html">Horizontal orientation</a></li>
                                                     <li><a href="dimple_bars_vertical.html">Vertical orientation</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Area charts</a>
+                                                <a :href="null">Area charts</a>
                                                 <ul>
                                                     <li><a href="dimple_area_horizontal.html">Horizontal orientation</a></li>
                                                     <li><a href="dimple_area_vertical.html">Vertical orientation</a></li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Step charts</a>
+                                                <a :href="null">Step charts</a>
                                                 <ul>
                                                     <li><a href="dimple_step_horizontal.html">Horizontal orientation</a></li>
                                                     <li><a href="dimple_step_vertical.html">Vertical orientation</a></li>
@@ -653,7 +653,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-stats-bars"></i> <span>C3 library</span></a>
+                                        <a :href="null"><i class="icon-stats-bars"></i> <span>C3 library</span></a>
                                         <ul>
                                             <li><a href="c3_lines_areas.html">Lines and areas</a></li>
                                             <li><a href="c3_bars_pies.html">Bars and pies</a></li>
@@ -663,7 +663,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-google"></i> <span>Google visualization</span></a>
+                                        <a :href="null"><i class="icon-google"></i> <span>Google visualization</span></a>
                                         <ul>
                                             <li><a href="google_lines.html">Line charts</a></li>
                                             <li><a href="google_bars.html">Bar charts</a></li>
@@ -673,10 +673,10 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-map5"></i> <span>Maps integration</span></a>
+                                        <a :href="null"><i class="icon-map5"></i> <span>Maps integration</span></a>
                                         <ul>
                                             <li>
-                                                <a href="#">Google maps</a>
+                                                <a :href="null">Google maps</a>
                                                 <ul>
                                                     <li><a href="maps_google_basic.html">Basics</a></li>
                                                     <li><a href="maps_google_controls.html">Controls</a></li>
@@ -693,7 +693,7 @@
                                     <!-- Extensions -->
                                     <li class="navigation-header"><span>Extensions</span> <i class="icon-menu" title="Extensions"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-puzzle4"></i> <span>Extensions</span></a>
+                                        <a :href="null"><i class="icon-puzzle4"></i> <span>Extensions</span></a>
                                         <ul>
                                             <li><a href="extension_image_cropper.html">Image cropper</a></li>
                                             <li><a href="extension_blockui.html">Block UI</a></li>
@@ -701,7 +701,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-popout"></i> <span>JQuery UI</span></a>
+                                        <a :href="null"><i class="icon-popout"></i> <span>JQuery UI</span></a>
                                         <ul>
                                             <li><a href="jqueryui_interactions.html">Interactions</a></li>
                                             <li><a href="jqueryui_forms.html">Forms</a></li>
@@ -711,7 +711,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-upload"></i> <span>File uploaders</span></a>
+                                        <a :href="null"><i class="icon-upload"></i> <span>File uploaders</span></a>
                                         <ul>
                                             <li><a href="uploader_plupload.html">Plupload</a></li>
                                             <li><a href="uploader_bootstrap.html">Bootstrap file uploader</a></li>
@@ -719,7 +719,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-calendar3"></i> <span>Event calendars</span></a>
+                                        <a :href="null"><i class="icon-calendar3"></i> <span>Event calendars</span></a>
                                         <ul>
                                             <li><a href="extension_fullcalendar_views.html">Basic views</a></li>
                                             <li><a href="extension_fullcalendar_styling.html">Event styling</a></li>
@@ -728,7 +728,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-sphere"></i> <span>Internationalization</span></a>
+                                        <a :href="null"><i class="icon-sphere"></i> <span>Internationalization</span></a>
                                         <ul>
                                             <li><a href="internationalization_switch_direct.html">Direct translation</a></li>
                                             <li><a href="internationalization_switch_query.html">Querystring parameter</a></li>
@@ -743,7 +743,7 @@
                                     <!-- Tables -->
                                     <li class="navigation-header"><span>Tables</span> <i class="icon-menu" title="Tables"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-table2"></i> <span>Basic tables</span></a>
+                                        <a :href="null"><i class="icon-table2"></i> <span>Basic tables</span></a>
                                         <ul>
                                             <li><a href="table_basic.html">Basic examples</a></li>
                                             <li><a href="table_sizing.html">Table sizing</a></li>
@@ -753,7 +753,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-grid7"></i> <span>Data tables</span></a>
+                                        <a :href="null"><i class="icon-grid7"></i> <span>Data tables</span></a>
                                         <ul>
                                             <li><a href="datatable_basic.html">Basic initialization</a></li>
                                             <li><a href="datatable_styling.html">Basic styling</a></li>
@@ -764,7 +764,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-alignment-unalign"></i> <span>Data tables extensions</span></a>
+                                        <a :href="null"><i class="icon-alignment-unalign"></i> <span>Data tables extensions</span></a>
                                         <ul>
                                             <li><a href="datatable_extension_reorder.html">Columns reorder</a></li>
                                             <li><a href="datatable_extension_row_reorder.html">Row reorder</a></li>
@@ -775,7 +775,7 @@
                                             <li><a href="datatable_extension_scroller.html">Scroller</a></li>
                                             <li><a href="datatable_extension_select.html">Select</a></li>
                                             <li>
-                                                <a href="#">Buttons</a>
+                                                <a :href="null">Buttons</a>
                                                 <ul>
                                                     <li><a href="datatable_extension_buttons_init.html">Initialization</a></li>
                                                     <li><a href="datatable_extension_buttons_flash.html">Flash buttons</a></li>
@@ -788,7 +788,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-file-spreadsheet"></i> <span>Handsontable</span></a>
+                                        <a :href="null"><i class="icon-file-spreadsheet"></i> <span>Handsontable</span></a>
                                         <ul>
                                             <li><a href="handsontable_basic.html">Basic configuration</a></li>
                                             <li><a href="handsontable_advanced.html">Advanced setup</a></li>
@@ -802,7 +802,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-versions"></i> <span>Responsive options</span></a>
+                                        <a :href="null"><i class="icon-versions"></i> <span>Responsive options</span></a>
                                         <ul>
                                             <li><a href="table_responsive.html">Responsive basic tables</a></li>
                                             <li><a href="datatable_responsive.html">Responsive data tables</a></li>
@@ -813,7 +813,7 @@
                                     <!-- Page kits -->
                                     <li class="navigation-header"><span>Page kits</span> <i class="icon-menu" title="Page kits"></i></li>
                                     <li>
-                                        <a href="#"><i class="icon-grid6"></i> <span>General pages</span></a>
+                                        <a :href="null"><i class="icon-grid6"></i> <span>General pages</span></a>
                                         <ul>
                                             <li><a href="general_feed.html">Feed</a></li>
                                             <li><a href="general_widgets_content.html">Content widgets</a></li>
@@ -822,7 +822,7 @@
                                             <li><a href="general_faq.html">FAQ page</a></li>
                                             <li><a href="general_knowledgebase.html">Knowledgebase</a></li>
                                             <li>
-                                                <a href="#">Blog</a>
+                                                <a :href="null">Blog</a>
                                                 <ul>
                                                     <li><a href="blog_classic_v.html">Classic vertical</a></li>
                                                     <li><a href="blog_classic_h.html">Classic horizontal</a></li>
@@ -834,7 +834,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Timelines</a>
+                                                <a :href="null">Timelines</a>
                                                 <ul>
                                                     <li><a href="timelines_left.html">Left timeline</a></li>
                                                     <li><a href="timelines_right.html">Right timeline</a></li>
@@ -842,7 +842,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Gallery</a>
+                                                <a :href="null">Gallery</a>
                                                 <ul>
                                                     <li><a href="gallery_grid.html">Media grid</a></li>
                                                     <li><a href="gallery_titles.html">Media with titles</a></li>
@@ -853,11 +853,11 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-wrench3"></i> <span>Service pages</span></a>
+                                        <a :href="null"><i class="icon-wrench3"></i> <span>Service pages</span></a>
                                         <ul>
                                             <li><a href="service_sitemap.html">Sitemap</a></li>
                                             <li>
-                                                <a href="#">Invoicing</a>
+                                                <a :href="null">Invoicing</a>
                                                 <ul>
                                                     <li><a href="invoice_template.html">Invoice template</a></li>
                                                     <li><a href="invoice_grid.html">Invoice grid</a></li>
@@ -865,7 +865,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Authentication</a>
+                                                <a :href="null">Authentication</a>
                                                 <ul>
                                                     <li><a href="login_simple.html">Simple login</a></li>
                                                     <li><a href="login_advanced.html">More login info</a></li>
@@ -882,7 +882,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Error pages</a>
+                                                <a :href="null">Error pages</a>
                                                 <ul>
                                                     <li><a href="error_403.html">Error 403</a></li>
                                                     <li><a href="error_404.html">Error 404</a></li>
@@ -895,7 +895,7 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-people"></i> <span>User pages</span></a>
+                                        <a :href="null"><i class="icon-people"></i> <span>User pages</span></a>
                                         <ul>
                                             <li><a href="user_pages_list.html">User list</a></li>
                                             <li><a href="user_pages_cards.html">User cards</a></li>
@@ -905,10 +905,10 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="icon-cube3"></i> <span>Application pages</span></a>
+                                        <a :href="null"><i class="icon-cube3"></i> <span>Application pages</span></a>
                                         <ul>
                                             <li>
-                                                <a href="#">Task manager</a>
+                                                <a :href="null">Task manager</a>
                                                 <ul>
                                                     <li><a href="task_manager_grid.html">Task grid</a></li>
                                                     <li><a href="task_manager_list.html">Task list</a></li>
@@ -916,7 +916,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Inbox</a>
+                                                <a :href="null">Inbox</a>
                                                 <ul>
                                                     <li><a href="mail_list.html">Mail list</a></li>
                                                     <li><a href="mail_list_detached.html">Mail list (detached)</a></li>
@@ -928,7 +928,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Search</a>
+                                                <a :href="null">Search</a>
                                                 <ul>
                                                     <li><a href="search_basic.html">Basic search results</a></li>
                                                     <li><a href="search_users.html">User search results</a></li>
@@ -937,7 +937,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Job search</a>
+                                                <a :href="null">Job search</a>
                                                 <ul>
                                                     <li><a href="job_list_cards.html">Cards view</a></li>
                                                     <li><a href="job_list_panel.html">Panel view</a></li>
@@ -946,7 +946,7 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Learning</a>
+                                                <a :href="null">Learning</a>
                                                 <ul>
                                                     <li><a href="learning_list.html">List view</a></li>
                                                     <li><a href="learning_grid.html">Grid view</a></li>
@@ -954,7 +954,7 @@
                                                 </ul>
                                             </li>
                                             <li class="disabled">
-                                                <a href="#">Ecommerce set <span class="label label-transparent">in 1.6</span></a>
+                                                <a :href="null">Ecommerce set <span class="label label-transparent">in 1.6</span></a>
                                                 <ul>
                                                     <li><a href="ecommerce_product_list.html">Product list</a></li>
                                                     <li><a href="ecommerce_product_grid.html">Product grid</a></li>
@@ -966,7 +966,7 @@
                                                 </ul>
                                             </li>
                                             <li class="disabled">
-                                                <a href="#">Real estate <span class="label label-transparent">in 1.6</span></a>
+                                                <a :href="null">Real estate <span class="label label-transparent">in 1.6</span></a>
                                                 <ul>
                                                     <li><a href="properties_list.html">Properties list</a></li>
                                                     <li><a href="properties_grid.html">Properties grid</a></li>
@@ -1002,9 +1002,9 @@
 
                             <div class="heading-elements">
                                 <div class="heading-btn-group">
-                                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
-                                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
-                                    <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+                                    <a :href="null" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                                    <a :href="null" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+                                    <a :href="null" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1014,29 +1014,11 @@
                                 <li><a href="index.html"><i class="icon-home2 position-left"></i> Home</a></li>
                                 <li class="active">Dashboard</li>
                             </ul>
-                            <ul class="breadcrumb-elements">
-                                <li><a href="#"><i class="icon-comment-discussion position-left"></i> Support</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="icon-gear position-left"></i>
-                                        Settings
-                                        <span class="caret"></span>
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
-                                        <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
-                                        <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <router-view>
                         <div class="footer text-muted">
-                            © 2015. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+                            © 2015. <a :href="null">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
                         </div>
                     </router-view>
                 </div>
@@ -1045,8 +1027,8 @@
     </div>
 </template>
 <script>
+import $ from 'jquery'
 export default {
-
   mounted () {
     $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
       e.preventDefault()

@@ -35,12 +35,12 @@
                                 <div class="heading-elements">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i> <span class="caret"></span></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog3"></i> <span class="caret"></span></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-sync"></i> Update data</a></li>
-                                                <li><a href="#"><i class="icon-list-unordered"></i> Detailed log</a></li>
-                                                <li><a href="#"><i class="icon-pie5"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="icon-cross3"></i> Clear list</a></li>
+                                                <li><a :href="null"><i class="icon-sync"></i> Update data</a></li>
+                                                <li><a :href="null"><i class="icon-list-unordered"></i> Detailed log</a></li>
+                                                <li><a :href="null"><i class="icon-pie5"></i> Statistics</a></li>
+                                                <li><a :href="null"><i class="icon-cross3"></i> Clear list</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -109,7 +109,7 @@
 
                                 <td class="col-md-3">
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm-add"></i></a>
+                                        <a :href="null" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm-add"></i></a>
                                     </div>
 
                                     <div class="media-left">
@@ -121,7 +121,7 @@
 
                                 <td class="col-md-3">
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-spinner11"></i></a>
+                                        <a :href="null" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-spinner11"></i></a>
                                     </div>
 
                                     <div class="media-left">
@@ -132,7 +132,7 @@
                                 </td>
 
                                 <td class="text-right col-md-2">
-                                    <a href="#" class="btn bg-teal-400"><i class="icon-statistics position-left"></i> Report</a>
+                                    <a :href="null" class="btn bg-teal-400"><i class="icon-statistics position-left"></i> Report</a>
                                 </td>
                             </tr>
                             </tbody>
@@ -163,18 +163,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-teal-400 btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
+                                        <a :href="null" class="display-inline-block text-default text-semibold letter-icon-title">Annabelle Doney</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> Active</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         <span class="text-semibold">[#1183] Workaround for OS X selects printing bug</span>
                                         <span class="display-block text-muted">Chrome fixed the bug several versions ago, thus rendering this...</span>
                                     </a>
@@ -182,13 +182,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -201,16 +201,16 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                        <a :href="null"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Chris Macintyre</a>
+                                        <a :href="null" class="display-inline-block text-default text-semibold letter-icon-title">Chris Macintyre</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> Active</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         <span class="text-semibold">[#1249] Vertically center carousel controls</span>
                                         <span class="display-block text-muted">Try any carousel control and reduce the screen width below...</span>
                                     </a>
@@ -218,13 +218,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -237,18 +237,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-blue btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-blue btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Robert Hauber</a>
+                                        <a :href="null" class="display-inline-block text-default text-semibold letter-icon-title">Robert Hauber</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> Active</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         <span class="text-semibold">[#1254] Inaccurate small pagination height</span>
                                         <span class="display-block text-muted">The height of pagination elements is not consistent with...</span>
                                     </a>
@@ -256,13 +256,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -275,18 +275,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-warning-400 btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-warning-400 btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default text-semibold letter-icon-title">Dex Sponheim</a>
+                                        <a :href="null" class="display-inline-block text-default text-semibold letter-icon-title">Dex Sponheim</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-blue position-left"></span> Active</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         <span class="text-semibold">[#1184] Round grid column gutter operations</span>
                                         <span class="display-block text-muted">Left rounds up, right rounds down. should keep everything...</span>
                                     </a>
@@ -294,13 +294,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-checkmark3 text-success"></i> Resolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -320,18 +320,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-success-400 btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-success-400 btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default letter-icon-title">Alan Macedo</a>
+                                        <a :href="null" class="display-inline-block text-default letter-icon-title">Alan Macedo</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-success position-left"></span> Resolved</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         [#1046] Avoid some unnecessary HTML string
                                         <span class="display-block text-muted">Rather than building a string of HTML and then parsing it...</span>
                                     </a>
@@ -339,13 +339,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -358,18 +358,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-pink-400 btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-pink-400 btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default letter-icon-title">Brett Castellano</a>
+                                        <a :href="null" class="display-inline-block text-default letter-icon-title">Brett Castellano</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-success position-left"></span> Resolved</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         [#1038] Update json configuration
                                         <span class="display-block text-muted">The <code>files</code> property is necessary to override the files property...</span>
                                     </a>
@@ -377,13 +377,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -396,16 +396,16 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                        <a :href="null"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default">Roxanne Forbes</a>
+                                        <a :href="null" class="display-inline-block text-default">Roxanne Forbes</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-success position-left"></span> Resolved</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         [#1034] Tooltip multiple event
                                         <span class="display-block text-muted">Fix behavior when using tooltips and popovers that are...</span>
                                     </a>
@@ -413,13 +413,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -439,16 +439,16 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
+                                        <a :href="null"><img src="assets/images/placeholder.jpg" class="img-circle img-xs" alt=""></a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default">Mitchell Sitkin</a>
+                                        <a :href="null" class="display-inline-block text-default">Mitchell Sitkin</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-danger position-left"></span> Closed</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         [#1040] Account for static form controls in form group
                                         <span class="display-block text-muted">Resizes control label's font-size and account for the standard...</span>
                                     </a>
@@ -456,13 +456,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropup">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-reload-alt text-blue"></i> Reopen issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-reload-alt text-blue"></i> Reopen issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -475,18 +475,18 @@
                                 </td>
                                 <td>
                                     <div class="media-left media-middle">
-                                        <a href="#" class="btn bg-brown-400 btn-rounded btn-icon btn-xs">
+                                        <a :href="null" class="btn bg-brown-400 btn-rounded btn-icon btn-xs">
                                             <span class="letter-icon"></span>
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#" class="display-inline-block text-default letter-icon-title">Katleen Jensen</a>
+                                        <a :href="null" class="display-inline-block text-default letter-icon-title">Katleen Jensen</a>
                                         <div class="text-muted text-size-small"><span class="status-mark border-danger position-left"></span> Closed</div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" class="text-default display-inline-block">
+                                    <a :href="null" class="text-default display-inline-block">
                                         [#1038] Proper sizing of form control feedback
                                         <span class="display-block text-muted">Feedback icon sizing inside a larger/smaller form-group...</span>
                                     </a>
@@ -494,13 +494,13 @@
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropup">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
+                                            <a :href="null" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i></a>
                                             <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="icon-undo"></i> Quick reply</a></li>
-                                                <li><a href="#"><i class="icon-history"></i> Full history</a></li>
+                                                <li><a :href="null"><i class="icon-undo"></i> Quick reply</a></li>
+                                                <li><a :href="null"><i class="icon-history"></i> Full history</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
-                                                <li><a href="#"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
+                                                <li><a :href="null"><i class="icon-plus3 text-blue"></i> Unresolve issue</a></li>
+                                                <li><a :href="null"><i class="icon-cross2 text-danger"></i> Close issue</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -532,7 +532,7 @@
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
                                             <div class="thumb">
-                                                <a href="#">
+                                                <a :href="null">
                                                     <img src="assets/images/placeholder.jpg" class="img-responsive img-rounded media-preview" alt="">
                                                     <span class="zoom-image"><i class="icon-play3"></i></span>
                                                 </a>
@@ -540,7 +540,7 @@
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">Up unpacked friendly</a></h6>
+                                            <h6 class="media-heading"><a :href="null">Up unpacked friendly</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
                                                 <li><i class="icon-book-play position-left"></i> Video tutorials</li>
                                                 <li>14 minutes ago</li>
@@ -552,7 +552,7 @@
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
                                             <div class="thumb">
-                                                <a href="#">
+                                                <a :href="null">
                                                     <img src="assets/images/placeholder.jpg" class="img-responsive img-rounded media-preview" alt="">
                                                     <span class="zoom-image"><i class="icon-play3"></i></span>
                                                 </a>
@@ -560,7 +560,7 @@
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">It allowance prevailed</a></h6>
+                                            <h6 class="media-heading"><a :href="null">It allowance prevailed</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
                                                 <li><i class="icon-book-play position-left"></i> Video tutorials</li>
                                                 <li>12 days ago</li>
@@ -576,7 +576,7 @@
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
                                             <div class="thumb">
-                                                <a href="#">
+                                                <a :href="null">
                                                     <img src="assets/images/placeholder.jpg" class="img-responsive img-rounded media-preview" alt="">
                                                     <span class="zoom-image"><i class="icon-play3"></i></span>
                                                 </a>
@@ -584,7 +584,7 @@
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">Case read they must</a></h6>
+                                            <h6 class="media-heading"><a :href="null">Case read they must</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
                                                 <li><i class="icon-book-play position-left"></i> Video tutorials</li>
                                                 <li>20 hours ago</li>
@@ -596,7 +596,7 @@
                                     <li class="media stack-media-on-mobile">
                                         <div class="media-left">
                                             <div class="thumb">
-                                                <a href="#">
+                                                <a :href="null">
                                                     <img src="assets/images/placeholder.jpg" class="img-responsive img-rounded media-preview" alt="">
                                                     <span class="zoom-image"><i class="icon-play3"></i></span>
                                                 </a>
@@ -604,7 +604,7 @@
                                         </div>
 
                                         <div class="media-body">
-                                            <h6 class="media-heading"><a href="#">Too carriage attended</a></h6>
+                                            <h6 class="media-heading"><a :href="null">Too carriage attended</a></h6>
                                             <ul class="list-inline list-inline-separate text-muted mb-5">
                                                 <li><i class="icon-book-play position-left"></i> FAQ section</li>
                                                 <li>2 days ago</li>
@@ -697,7 +697,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             James Alexander
                                             <span class="media-annotation pull-right">14:58</span>
                                         </a>
@@ -713,7 +713,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Margo Baker
                                             <span class="media-annotation pull-right">12:16</span>
                                         </a>
@@ -728,7 +728,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Jeremy Victorino
                                             <span class="media-annotation pull-right">09:48</span>
                                         </a>
@@ -743,7 +743,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Beatrix Diaz
                                             <span class="media-annotation pull-right">05:54</span>
                                         </a>
@@ -758,7 +758,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Richard Vango
                                             <span class="media-annotation pull-right">01:43</span>
                                         </a>
@@ -777,7 +777,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Isak Temes
                                             <span class="media-annotation pull-right">Tue, 19:58</span>
                                         </a>
@@ -792,7 +792,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Vittorio Cosgrove
                                             <span class="media-annotation pull-right">Tue, 16:35</span>
                                         </a>
@@ -807,7 +807,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Hilary Talaugon
                                             <span class="media-annotation pull-right">Tue, 12:16</span>
                                         </a>
@@ -822,7 +822,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Bobbie Seber
                                             <span class="media-annotation pull-right">Tue, 09:20</span>
                                         </a>
@@ -837,7 +837,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Walther Laws
                                             <span class="media-annotation pull-right">Tue, 03:29</span>
                                         </a>
@@ -856,7 +856,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Owen Stretch
                                             <span class="media-annotation pull-right">Mon, 18:12</span>
                                         </a>
@@ -871,7 +871,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Jenilee Mcnair
                                             <span class="media-annotation pull-right">Mon, 14:03</span>
                                         </a>
@@ -886,7 +886,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Alaster Jain
                                             <span class="media-annotation pull-right">Mon, 13:59</span>
                                         </a>
@@ -901,7 +901,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Sigfrid Thisted
                                             <span class="media-annotation pull-right">Mon, 09:26</span>
                                         </a>
@@ -916,7 +916,7 @@
                                     </div>
 
                                     <div class="media-body">
-                                        <a href="#">
+                                        <a :href="null">
                                             Sherilyn Mckee
                                             <span class="media-annotation pull-right">Mon, 06:38</span>
                                         </a>

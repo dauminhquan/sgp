@@ -34427,19 +34427,14 @@ label.display-block {
   float: right;
   display: none;
   cursor: pointer;
-  margin-left: 5px;
 }
 .message-more-left{
   float: left;
   display: none;
   cursor: pointer;
-  margin-right: 5px;
 }
-@media (min-width: 415px) {
-  .chat-list .media-content {
-    max-width: 95%;
-  }
-}.bg-primary {
+
+.bg-primary {
   background-color: #2196F3;
   border-color: #2196F3;
   color: #fff;
