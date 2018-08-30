@@ -87,7 +87,8 @@
                         <h6 class="panel-title">Support tickets</h6>
                         <div class="heading-elements">
                             <button type="button" class="btn btn-link daterange-ranges heading-btn text-semibold">
-                                <date-picker v-model="dateChoose" range lang="en" format="DD/MM/YYYY HH:mm" :confirm="true" :editable="false" range-separator="đến" type="datetime" placeholder="Chọn thời gian"></date-picker>
+                                <date-picker
+                                        v-model="dateChoose" range  lang="vi" format="DD/MM/YYYY HH:mm" :confirm="true" :editable="false" range-separator="đến" type="datetime" placeholder="Chọn thời gian"></date-picker>
                             </button>
                         </div>
                     </div>
@@ -939,16 +940,25 @@
 </template>
 <script>
 import DatePicker from 'vue2-datepicker'
+import $ from 'jquery'
 export default {
   components: { DatePicker },
   mounted () {
-
+    if (window.innerWidth < 700) {
+      $('.mx-datepicker-popup').addClass('unset-right')
+    }
+  },
+  methods: {
   },
   data () {
     return {
-      dateChoose: null,
-      dsadsadsa: '123'
+      dateChoose: null
     }
   }
 }
 </script>
+<style>
+    .unset-right{
+        right: unset !important;
+    }
+</style>

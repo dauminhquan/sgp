@@ -14,7 +14,7 @@
                 <div class="category-content">
                     <form action="#">
                         <div class="has-feedback has-feedback-left">
-                            <input type="search" class="form-control" placeholder="Type and hit Enter">
+                            <input type="search" class="form-control" placeholder="Nhập ID người dùng">
                             <div class="form-control-feedback">
                                 <i class="icon-search4 text-size-base text-muted"></i>
                             </div>
@@ -36,88 +36,40 @@
                 <div class="category-content no-padding">
                     <ul class="navigation navigation-alt navigation-accordion">
                         <li class="navigation-header">Actions</li>
-                        <li><a :href="null"><i class="icon-compose"></i> Compose message</a></li>
-                        <li><a :href="null"><i class="icon-collaboration"></i> Conference</a></li>
-                        <li><a :href="null"><i class="icon-user-plus"></i> Add users <span class="label label-success">32 online</span></a></li>
-                        <li><a :href="null"><i class="icon-users"></i> Create team</a></li>
+                        <li><a :href="null"><i class="icon-compose"></i> Chat boot</a></li>
+                        <li>
+                            <a :href="null" @click="clickAddUser"><i class="icon-user-plus"></i> Thêm người dùng <span class="label label-success">32 online</span></a>
+                            <ul v-if="subMenuAddUser == true">
+                                <li>
+                                    <div class="input-group form-control sub-menu-2-input-group">
+                                        <input type="text" class="form-control" placeholder="Nhập Id người dùng">
+                                        <span class="input-group-btn">
+                                            <button class="btn bg-info" type="button"><i class="icon-user-plus"></i></button>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a :href="null"><i class="icon-users"></i> Tạo mới nhóm chat</a></li>
                         <li class="navigation-divider"></li>
-                        <li><a :href="null"><i class="icon-files-empty"></i> All messages <span class="badge badge-danger">99+</span></a></li>
-                        <li><a :href="null"><i class="icon-file-plus"></i> Active discussions <span class="badge badge-default">32</span></a></li>
-                        <li><a :href="null"><i class="icon-file-locked"></i> Closed discussions</a></li>
-                        <li class="navigation-header">Options</li>
-                        <li><a :href="null"><i class="icon-reading"></i> Message history</a></li>
-                        <li><a :href="null"><i class="icon-cog3"></i> Settings</a></li>
+                        <li><a :href="null"><i class="icon-file-plus"></i> Yêu cầu vào nhóm chat <span class="badge badge-danger">32</span></a></li>
+                        <li><a :href="null"><i class="icon-file-locked"></i> Đóng nhóm chat</a></li>
                     </ul>
                 </div>
             </div>
             <!-- /sub navigation -->
 
-            <!-- Latest updates -->
-            <div class="sidebar-category">
-                <div class="category-title">
-                    <span>new issue</span>
-                    <ul class="icons-list">
-                        <li><a :href="null" data-action="collapse"></a></li>
-                    </ul>
-                </div>
-
-                <div class="category-content">
-                    <ul class="media-list">
-                        <li class="media">
-                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
-                            <div class="media-body">
-                                <a :href="null">Richard Vango</a> has been registered
-                                <div class="media-annotation">4 minutes ago</div>
-                            </div>
-                        </li>
-
-                        <li class="media">
-                            <div class="media-left"><a :href="null" class="btn border-slate text-slate btn-flat btn-icon btn-sm btn-rounded"><i class="icon-infinite"></i></a></div>
-                            <div class="media-body">
-                                Server went offline for monthly maintenance
-                                <div class="media-annotation">36 minutes ago</div>
-                            </div>
-                        </li>
-
-                        <li class="media">
-                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
-                            <div class="media-body">
-                                <a :href="null">Chris Arney</a> has been registered
-                                <div class="media-annotation">2 hours ago</div>
-                            </div>
-                        </li>
-
-                        <li class="media">
-                            <div class="media-left"><a :href="null" class="btn border-danger text-danger btn-flat btn-icon btn-sm btn-rounded"><i class="icon-cross2"></i></a></div>
-                            <div class="media-body">
-                                <a :href="null">Chris Arney</a> left main conversation
-                                <div class="media-annotation">Dec 18, 18:36</div>
-                            </div>
-                        </li>
-
-                        <li class="media">
-                            <div class="media-left"><a :href="null" class="btn border-primary text-primary btn-flat btn-icon btn-sm btn-rounded"><i class="icon-plus3"></i></a></div>
-                            <div class="media-body">
-                                <a :href="null">Beatrix Diaz</a> just joined conversation
-                                <div class="media-annotation">Dec 12, 05:46</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /latest updates -->
-
             <!-- Online users -->
             <div class="sidebar-category">
                 <div class="category-title">
-                    <span>Online users</span>
+                    <span>Danh sách thành viên</span>
                     <ul class="icons-list">
                         <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content no-padding">
-                    <ul class="media-list media-list-linked">
+                    <ul class="media-list media-list-linked menu-scollbar">
                         <li class="media">
                             <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
@@ -216,14 +168,14 @@
             <!-- Latest messages -->
             <div class="sidebar-category">
                 <div class="category-title">
-                    <span>Latest messages</span>
+                    <span>Tin nhắn đang đợi</span>
                     <ul class="icons-list">
                         <li><a :href="null" data-action="collapse"></a></li>
                     </ul>
                 </div>
 
                 <div class="category-content no-padding">
-                    <ul class="media-list media-list-linked">
+                    <ul class="media-list media-list-linked menu-scollbar">
                         <li class="media">
                             <a :href="null" class="media-link">
                                 <div class="media-left"><img src="assets/images/placeholder.jpg" class="img-circle" alt=""></div>
@@ -277,7 +229,109 @@
                 </div>
             </div>
             <!-- /latest messages -->
+            <div class="sidebar-category">
+                <div class="category-title">
+                    <span>new issue</span>
+                    <ul class="icons-list">
+                        <li><a :href="null" data-action="collapse"></a></li>
+                    </ul>
+                </div>
+
+                <div class="category-content">
+                    <ul class="media-list menu-scollbar new-issue-menu">
+                        <li class="media">
+                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
+                            <div class="media-body">
+                                <a :href="null">Richard Vango</a> has been registered
+                                <div class="media-annotation">4 minutes ago</div>
+                            </div>
+                        </li>
+
+                        <li class="media">
+                            <div class="media-left"><a :href="null" class="btn border-slate text-slate btn-flat btn-icon btn-sm btn-rounded"><i class="icon-infinite"></i></a></div>
+                            <div class="media-body">
+                                Server went offline for monthly maintenance
+                                <div class="media-annotation">36 minutes ago</div>
+                            </div>
+                        </li>
+
+                        <li class="media">
+                            <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
+                            <div class="media-body">
+                                <a :href="null">Chris Arney</a> has been registered
+                                <div class="media-annotation">2 hours ago</div>
+                            </div>
+                        </li>
+
+                        <li class="media">
+                            <div class="media-left"><a :href="null" class="btn border-danger text-danger btn-flat btn-icon btn-sm btn-rounded"><i class="icon-cross2"></i></a></div>
+                            <div class="media-body">
+                                <a :href="null">Chris Arney</a> left main conversation
+                                <div class="media-annotation">Dec 18, 18:36</div>
+                            </div>
+                        </li>
+
+                        <li class="media">
+                            <div class="media-left"><a :href="null" class="btn border-primary text-primary btn-flat btn-icon btn-sm btn-rounded"><i class="icon-plus3"></i></a></div>
+                            <div class="media-body">
+                                <a :href="null">Beatrix Diaz</a> just joined conversation
+                                <div class="media-annotation">Dec 12, 05:46</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
         </div>
     </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      subMenuAddUser: false
+    }
+  },
+  methods: {
+    clickAddUser () {
+      this.subMenuAddUser = !this.subMenuAddUser
+    }
+  }
+}
+</script>
+<style>
+    .sub-menu-2-input-group{
+        border:none;
+    }
+    .menu-scollbar {
+        max-height: 500px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    /* width */
+    .menu-scollbar::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* Track */
+    .menu-scollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    .menu-scollbar::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    .menu-scollbar::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .new-issue-menu{
+        padding-right: 0;
+    }
+    .new-issue-menu > li{
+        padding-right: 20px;
+    }
+</style>

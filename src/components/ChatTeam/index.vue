@@ -2,7 +2,7 @@
     <div class="content">
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h6 class="panel-title">Default layout</h6>
+                <h6 class="panel-title"><b>#ID nhóm chat</b></h6>
                 <div class="heading-elements">
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>

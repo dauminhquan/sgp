@@ -6,6 +6,7 @@ import Group from '@/components/Group'
 import ChatTeam from '@/components/ChatTeam/index'
 import SidebarSecondary from '@/components/ChatTeam/components/sidebar-secondary'
 import ControlSidebarSecondary from '@/components/ChatTeam/components/control-sidebar-secondary'
+import sidebarMobileSecondaryToggle from '@/components/ChatTeam/components/sidebar-mobile-secondary-toggle'
 import $ from 'jquery'
 import 'bootstrap'
 import 'block-ui'
@@ -383,94 +384,6 @@ function init () {
       $('body').toggleClass('sidebar-opposite-visible')
     })
 
-    // Mobile sidebar controls
-    // -------------------------
-
-    // Toggle main sidebar
-    $('.sidebar-mobile-main-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
-    })
-
-    // Toggle secondary sidebar
-    $('.sidebar-mobile-secondary-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-secondary').removeClass('sidebar-mobile-main sidebar-mobile-opposite sidebar-mobile-detached')
-    })
-
-    // Toggle opposite sidebar
-    $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
-    })
-
-    // Toggle detached sidebar
-    $('.sidebar-mobile-detached-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')
-    })
-
-    // Mobile sidebar setup
-    // -------------------------
-
-    $(window).on('resize', function () {
-      setTimeout(function () {
-        if ($(window).width() <= 768) {
-          // Add mini sidebar indicator
-          $('body').addClass('sidebar-xs-indicator')
-
-          // Place right sidebar before content
-          $('.sidebar-opposite').insertBefore('.content-wrapper')
-
-          // Place detached sidebar before content
-          $('.sidebar-detached').insertBefore('.content-wrapper')
-
-          // Add mouse events for dropdown submenus
-          $('.dropdown-submenu').on('mouseenter', function () {
-            $(this).children('.dropdown-menu').addClass('show')
-          }).on('mouseleave', function () {
-            $(this).children('.dropdown-menu').removeClass('show')
-          })
-        } else {
-          // Remove mini sidebar indicator
-          $('body').removeClass('sidebar-xs-indicator')
-
-          // Revert back right sidebar
-          $('.sidebar-opposite').insertAfter('.content-wrapper')
-
-          // Remove all mobile sidebar classes
-          $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite')
-
-          // Revert left detached position
-          if ($('body').hasClass('has-detached-left')) {
-            $('.sidebar-detached').insertBefore('.container-detached')
-          }
-
-          // Revert right detached position
-          else if ($('body').hasClass('has-detached-right')) {
-            $('.sidebar-detached').insertAfter('.container-detached')
-          }
-
-          // Remove visibility of heading elements on desktop
-          $('.page-header-content, .panel-heading, .panel-footer').removeClass('has-visible-elements')
-          $('.heading-elements').removeClass('visible-elements')
-
-          // Disable appearance of dropdown submenus
-          $('.dropdown-submenu').children('.dropdown-menu').removeClass('show')
-        }
-      }, 100)
-    }).resize()
-
-    // ========================================
-    //
-    // Other code
-    //
-    // ========================================
-
-    // Plugins
-    // -------------------------
-
-    // Popover
     $('[data-popup="popover"]').popover()
 
     // Tooltip
@@ -499,13 +412,14 @@ let RT = new Router({
           components: {
             default: ChatTeam,
             'sidebar-secondary': SidebarSecondary,
-            'control-sidebar-secondary': ControlSidebarSecondary
+            'control-sidebar-secondary': ControlSidebarSecondary,
+            'sidebar-mobile-secondary-toggle': sidebarMobileSecondaryToggle
           }
         }
       ]
     }
-
-  ]
+  ],
+  mode: 'history'
 })
 RT.afterEach((to, from) => {
   init()
