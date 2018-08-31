@@ -1075,12 +1075,6 @@ export default {
       $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
     })
 
-    // Toggle secondary sidebar
-    $('.sidebar-mobile-secondary-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-secondary').removeClass('sidebar-mobile-main sidebar-mobile-opposite sidebar-mobile-detached')
-    })
-
     // Toggle opposite sidebar
     $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
       e.preventDefault()
@@ -1160,3 +1154,4 @@ export default {
   }
 }
 </script>
+

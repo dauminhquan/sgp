@@ -418,8 +418,8 @@ let RT = new Router({
         }
       ]
     }
-  ],
-  mode: 'history'
+  ]
+  /* mode: 'history' */
 })
 RT.afterEach((to, from) => {
   init()

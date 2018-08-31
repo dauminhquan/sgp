@@ -237,8 +237,8 @@
                     </ul>
                 </div>
 
-                <div class="category-content">
-                    <ul class="media-list menu-scollbar new-issue-menu">
+                <div class="category-content new-issue-menu">
+                    <ul class="media-list menu-scollbar">
                         <li class="media">
                             <div class="media-left"><a :href="null" class="btn border-success text-success btn-flat btn-icon btn-sm btn-rounded"><i class="icon-checkmark3"></i></a></div>
                             <div class="media-body">
@@ -308,30 +308,26 @@ export default {
         overflow: scroll;
         overflow-x: hidden;
     }
-    /* width */
     .menu-scollbar::-webkit-scrollbar {
         width: 5px;
     }
 
-    /* Track */
     .menu-scollbar::-webkit-scrollbar-track {
         background: #f1f1f1;
     }
 
-    /* Handle */
     .menu-scollbar::-webkit-scrollbar-thumb {
         background: #888;
         border-radius: 10px;
     }
 
-    /* Handle on hover */
     .menu-scollbar::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
     .new-issue-menu{
         padding-right: 0;
     }
-    .new-issue-menu > li{
+    .new-issue-menu li{
         padding-right: 20px;
     }
 </style>

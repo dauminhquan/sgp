@@ -186,8 +186,23 @@
                         </div>
                     </li>
                 </ul>
-
-                <textarea name="enter-message" class="form-control content-group" rows="3" cols="1" placeholder="Enter your message..."></textarea>
+                <div class="popover fade top in pop-tag-member" v-show="showTagFriend == true">
+                    <div class="popover-content">
+                        <ul class="navigation tag-member">
+                            <li v-for="friend in searchFriendTagToMessage" :key="friend.id">
+                                <a :href="null">
+                                    <div class="media-left">
+                                        <img :src="friend.avatar" class="img-circle" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        @{{friend.name}}
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <textarea v-model="textMessage" name="enter-message" class="form-control content-group" rows="3" cols="1" placeholder="Nhập tin nhắn của bạn, gõ @name để tag thành viên..."></textarea>
 
                 <div class="row">
                     <div class="col-xs-6">
@@ -213,7 +228,33 @@
 <script>
 import $ from 'jquery'
 export default {
+  updated () {
+    this.$nextTick(function () {
+      this.offsetHeightPopTagMember = document.getElementsByClassName('pop-tag-member').item(0).offsetHeight
+    })
+  },
+  computed: {
 
+  },
+  watch: {
+    textMessage (newText) {
+      let arrayText = newText.split('').reverse()
+      if (arrayText[0] === '@') {
+        this.showTagFriend = true
+        let count = this.searchFriendTagToMessage.length
+        count = count * 54
+        console.dir(document.getElementsByClassName('pop-tag-member').item(0))
+        document.getElementsByClassName('pop-tag-member').item(0).style.top = (520 - count).toString() + 'px'
+      } else {
+        this.showTagFriend = false
+      }
+    },
+    offsetHeightPopTagMember (value) {
+      if (value === 300) {
+        document.getElementsByClassName('pop-tag-member').item(0).style.top = '240px'
+      }
+    }
+  },
   mounted () {
     let element, name, arr
     element = document.body
@@ -244,10 +285,95 @@ export default {
   },
   data () {
     return {
-      a: 'x'
+      textMessage: '',
+      showTagFriend: false,
+      searchFriendTagToMessage: [
+        {
+          id: 1,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 2,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 3,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 4,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 5,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 6,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 7,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        }
+      ],
+      offsetHeightPopTagMember: 0
     }
   },
   methods: {
   }
 }
 </script>
+<style>
+    .tag-member > li {
+        margin-bottom: 10px;
+    }
+    .tag-member > li > a{
+        color: #333333;
+        vertical-align: middle;
+        line-height: 40px;
+        font-size: 15px;
+    ;
+    }
+    .tag-member > li > a:hover{
+        color: #333333;
+    }
+    .pop-tag-member{
+        position: absolute;
+        display: block;
+        left: 20px;
+        top:520px;
+        max-height: 300px;
+        overflow: scroll;
+        overflow-x: unset;
+    }
+    .pop-tag-member::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .pop-tag-member::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .pop-tag-member::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    .pop-tag-member::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .pop-tag-member > div{
+        padding: 0 !important;
+    }
+    .tag-member > li > a {
+        padding: 0px 15px;
+    }
+</style>
