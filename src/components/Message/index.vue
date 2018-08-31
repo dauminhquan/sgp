@@ -2,7 +2,7 @@
     <div class="content">
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <h6 class="panel-title"><b><span class="badge bg-success">32 Online</span></b></h6>
+                <h6 class="panel-title"><b><span class="status-mark bg-success"></span></b></h6>
                 <div class="heading-elements">
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>
@@ -11,7 +11,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="panel-body">
                 <ul class="media-list chat-list content-group" ref="message-box" @scroll="scollMessageList">
 
@@ -84,7 +83,9 @@
                         </ul>
                     </div>
                 </div>
-                <textarea v-model="textMessage" name="enter-message" class="form-control content-group" rows="3" cols="1" placeholder="Nhập tin nhắn của bạn, gõ @name để tag thành viên..."></textarea>
+                <textarea v-model="textMessage" name="enter-message" class="form-control content-group" rows="3" cols="1" placeholder="Nhập tin nhắn của bạn, gõ @name để tag thành viên...">
+
+                </textarea>
 
                 <div class="row">
                     <div class="col-xs-6">
@@ -99,7 +100,17 @@
                     </div>
 
                     <div class="col-xs-6 text-right">
-                        <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b> Send</button>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button type="button" class="btn bg-success-400 " v-if="enterToSend == false"><b><i class="glyphicon glyphicon-send"></i> Gửi</b></button>
+                                <button type="button" class="btn bg-teal-400 " data-toggle="dropdown"><b><i class="icon-cog2"></i></b></button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a :href="null" @click="enterToSend = false" v-if="enterToSend == true">Nhấn Enter để gửi</a></li>
+                                    <li><a :href="null" @click="enterToSend = true" v-if="enterToSend == false">Sử dụng nút gửi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -127,12 +138,17 @@
         watch: {
             textMessage (newText) {
                 let arrayText = newText.split('').reverse()
-                if (arrayText[0] === '@') {
-                    this.showTagMember = true
-                    let count = this.searchMemberTagToMessage.length
-                    count = count * 54
-                    console.dir(document.getElementsByClassName('pop-tag-member').item(0))
-                    document.getElementsByClassName('pop-tag-member').item(0).style.top = (520 - count).toString() + 'px'
+                arrayText = arrayText.toString().replace(/,/g,'')
+                if (this.searchListTagMember(arrayText)) {
+                    if( this.searchMemberTagToMessage.length > 0)
+                    {
+                        this.showTagMember = true
+                        let count = this.searchMemberTagToMessage.length
+                        console.log(count)
+                        console.log(document.getElementsByClassName('pop-tag-member').item(0).style.top)
+                        let cc = count * 54
+                        document.getElementsByClassName('pop-tag-member').item(0).style.top = (520 - cc).toString() + 'px'
+                    }
                 } else {
                     this.showTagMember = false
                 }
@@ -174,7 +190,7 @@
         },
         data () {
             return {
-                textMessage: '',
+                textMessage: null,
                 showTagMember: false,
                 searchMemberTagToMessage: [
                     {
@@ -213,7 +229,45 @@
                         avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
                     }
                 ],
+                members: [
+                    {
+                        id: 1,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 2,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 3,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 4,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 5,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 6,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 7,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    }
+                ],
                 offsetHeightPopTagMember: 0,
+                enterToSend: true,
                 messages: [
                     {
                         'id': '5b88ed7eb5974b716ea92ec3',
@@ -464,6 +518,20 @@
                     return d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()
                 }
             },
+            searchListTagMember(text){
+                let index = text.indexOf('@')
+                if(index != -1)
+                {
+                    text = text.slice(0,index)
+                    text = text.split('').reverse()
+                    text = text.toString().replace(/,/g,'')
+                    this.searchMemberTagToMessage = this.members.filter(member => {
+                        return member.name.includes(text) === true
+                    })
+                    return true
+                }
+                return false
+            }
         }
     }
 </script>

@@ -7,6 +7,8 @@ import ChatTeam from '@/components/ChatTeam/index'
 import SidebarSecondary from '@/components/ChatTeam/components/sidebar-secondary'
 import ControlSidebarSecondary from '@/components/ChatTeam/components/control-sidebar-secondary'
 import sidebarMobileSecondaryToggle from '@/components/ChatTeam/components/sidebar-mobile-secondary-toggle'
+import Messages from '@/components/Message/index'
+import SidebarSecondaryMessage from '@/components/Message/components/sidebar-secondary'
 import $ from 'jquery'
 import 'bootstrap'
 import 'block-ui'
@@ -258,22 +260,16 @@ function init () {
       container: 'body'
     })
 
-    // Collapsible functionality
-    // -------------------------
+    $('.navigation-alt').find('li').has('ul').children('a').on('click', function (e) {
+      e.preventDefault()
 
-    // Main navigation
+      $(this).parent('li').not('.disabled').toggleClass('active').children('ul').slideToggle(200)
 
-    // ========================================
-    //
-    // Sidebars
-    //
-    // ========================================
-
-    // Mini sidebar
-    // -------------------------
-
-    // Sidebar controls
-    // -------------------------
+      // Accordion
+      if ($('.navigation-alt').hasClass('navigation-accordion')) {
+        $(this).parent('li').not('.disabled').siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(200)
+      }
+    })
 
     // Disable click in disabled navigation items
     $(document).on('click', '.navigation .disabled a', function (e) {
@@ -412,6 +408,16 @@ let RT = new Router({
           components: {
             default: ChatTeam,
             'sidebar-secondary': SidebarSecondary,
+            'control-sidebar-secondary': ControlSidebarSecondary,
+            'sidebar-mobile-secondary-toggle': sidebarMobileSecondaryToggle
+          }
+        },
+        {
+          path: 'messages',
+          name: 'messages',
+          components: {
+            default: Messages,
+            'sidebar-secondary': SidebarSecondaryMessage,
             'control-sidebar-secondary': ControlSidebarSecondary,
             'sidebar-mobile-secondary-toggle': sidebarMobileSecondaryToggle
           }

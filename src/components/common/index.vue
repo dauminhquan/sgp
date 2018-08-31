@@ -256,35 +256,15 @@
                                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                     <li class="active"><router-link :to="{name: 'home'}"><i class="icon-home4"></i> <span>Dashboard</span></router-link></li>
                                     <li>
-                                        <a :href="null"><i class="icon-stack2"></i> <span>Page layouts</span></a>
+                                        <a :href="null"><i class="icon-users4"></i> <span>Chat group <span class="label bg-warning-400">20</span></span></a>
                                         <ul>
-                                            <li><a href="layout_navbar_fixed.html">Fixed navbar</a></li>
-                                            <li><a href="layout_navbar_sidebar_fixed.html">Fixed navbar &amp; sidebar</a></li>
-                                            <li><a href="layout_sidebar_fixed_native.html">Fixed sidebar native scroll</a></li>
-                                            <li><a href="layout_navbar_hideable.html">Hideable navbar</a></li>
-                                            <li><a href="layout_navbar_hideable_sidebar.html">Hideable &amp; fixed sidebar</a></li>
-                                            <li><a href="layout_footer_fixed.html">Fixed footer</a></li>
-                                            <li class="navigation-divider"></li>
-                                            <li><a href="boxed_default.html">Boxed with default sidebar</a></li>
-                                            <li><a href="boxed_mini.html">Boxed with mini sidebar</a></li>
-                                            <li><a href="boxed_full.html">Boxed full width</a></li>
+                                            <li><router-link :to="{name : 'chat-team'}">Nhóm 1 <span class="label bg-warning-400">20</span></router-link></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a :href="null"><i class="icon-copy"></i> <span>Layouts</span></a>
+                                        <a :href="null"><i class="icon-users"></i> <span>Chat cá nhân</span></a>
                                         <ul>
-                                            <li><router-link :to="{name : 'chat-team'}">Layout 1</router-link></li>
-                                            <li><a href="index.html" id="layout2">Layout 2 <span class="label bg-warning-400">Current</span></a></li>
-                                            <li><a href="../../../layout_3/LTR/index.html" id="layout3">Layout 3</a></li>
-                                            <li><a href="../../../layout_4/LTR/index.html" id="layout4">Layout 4</a></li>
-                                            <li><a href="../../../layout_5/LTR/index.html" id="layout5">Layout 5</a></li>
-                                            <li class="disabled"><a href="../../../layout_6/LTR/index.html" id="layout6">Layout 6 <span class="label label-transparent">Coming soon</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a :href="null"><i class="icon-droplet2"></i> <span>Color system</span></a>
-                                        <ul>
-                                            <li><a href="colors_primary.html">Primary palette</a></li>
+                                            <li><router-link :to="{name : 'messages'}">Đậu Quân <span class="label bg-warning-400">20</span></router-link></li>
                                             <li><a href="colors_danger.html">Danger palette</a></li>
                                             <li><a href="colors_success.html">Success palette</a></li>
                                             <li><a href="colors_warning.html">Warning palette</a></li>
@@ -1055,17 +1035,6 @@ export default {
 
       if ($('.navigation-main').hasClass('navigation-accordion')) {
         $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(250)
-      }
-    })
-
-    $('.navigation-alt').find('li').has('ul').children('a').on('click', function (e) {
-      e.preventDefault()
-
-      $(this).parent('li').not('.disabled').toggleClass('active').children('ul').slideToggle(200)
-
-      // Accordion
-      if ($('.navigation-alt').hasClass('navigation-accordion')) {
-        $(this).parent('li').not('.disabled').siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(200)
       }
     })
 

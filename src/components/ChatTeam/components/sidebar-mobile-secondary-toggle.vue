@@ -8,7 +8,9 @@ export default {
       let element, name, arr
       element = document.body
       name = 'sidebar-mobile-secondary'
+
       arr = element.className.split(' ')
+      element.className = 'sidebar-xs sidebar-xs-indicator'
       if (arr.indexOf(name) === -1) {
         element.className += ' ' + name
       } else {
