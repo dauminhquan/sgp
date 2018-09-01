@@ -13,7 +13,7 @@
                 <div class="category-content">
                     <form action="#">
                         <div class="has-feedback has-feedback-left">
-                            <input type="search" v-model="idSearch" class="form-control" placeholder="Nhập ID người dùng">
+                            <input type="search" v-model="idSearch" class="form-control" placeholder="#id hoặc @name người dùng">
                             <div class="form-control-feedback">
                                 <i class="icon-search4 text-size-base text-muted"></i>
                             </div>

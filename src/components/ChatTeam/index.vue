@@ -108,364 +108,354 @@
     </div>
 </template>
 <script>
-    import $ from 'jquery'
-    export default {
-        updated () {
-            this.$nextTick(function () {
-                this.offsetHeightPopTagMember = document.getElementsByClassName('pop-tag-member').item(0).offsetHeight
-            })
-        },
-        computed: {
-            messageSorted () {
-                return this.messages.sort(function (a, b) {
-                    var c = new Date(a.time)
-                    var d = new Date(b.time)
-                    return c.getTime()-d.getTime()
-                })
-            }
-        },
-        watch: {
-            textMessage (newText) {
-                let arrayText = newText.split('').reverse()
-                if (arrayText[0] === '@') {
-                    this.showTagMember = true
-                    let count = this.searchMemberTagToMessage.length
-                    count = count * 54
-                    console.dir(document.getElementsByClassName('pop-tag-member').item(0))
-                    document.getElementsByClassName('pop-tag-member').item(0).style.top = (520 - count).toString() + 'px'
-                } else {
-                    this.showTagMember = false
-                }
-            },
-            offsetHeightPopTagMember (value) {
-                if (value === 300) {
-                    document.getElementsByClassName('pop-tag-member').item(0).style.top = '240px'
-                }
-            }
-        },
-        mounted () {
-            this.$refs['message-box'].scrollTop = this.$refs['message-box'].scrollHeight
-            let element, name, arr
-            element = document.body
-            name = 'sidebar-xs'
-            arr = element.className.split(' ')
-            if (arr.indexOf(name) === -1) {
-                element.className += ' ' + name
-            }
-            let WDWidth = $(window).width()
-            let wt = 50
-            if (WDWidth < 769) {
-                wt = 30
-            }
-            $('.media-body').hover(function () {
-                let widthP = $(this).width()
-                let widthC = $(this).children('.media-content').width()
-                let paddingLeft = $(this).children('.media-content').css('padding-left')
-                let paddingRight = $(this).children('.media-content').css('padding-right')
-                $(this).find('.message-more-left').show()
-                $(this).find('.message-more-left').css('margin-left', (widthP - widthC - wt - parseFloat(paddingLeft)) + 'px')
-                $(this).find('.message-more-right').show()
-                $(this).find('.message-more-right').css('margin-right', (widthP - widthC - wt - parseFloat(paddingRight)) + 'px')
-            })
-            $('.media-body').mouseleave(function () {
-                $(this).find('.message-more-left').hide()
-                $(this).find('.message-more-right').hide()
-            })
-        },
-        data () {
-            return {
-                textMessage: '',
-                showTagMember: false,
-                searchMemberTagToMessage: [
-                    {
-                        id: 1,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 2,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 3,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 4,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 5,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 6,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        id: 7,
-                        name: 'Cường Đào',
-                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    }
-                ],
-                offsetHeightPopTagMember: 0,
-                messages: [
-                    {
-                        'id': '5b88ed7eb5974b716ea92ec3',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2014-08-09 07:32:36',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e4c70d68bc6399c50',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2018-08-31 09:51:03',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e779ebc109fe3e4f7',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2017-07-25 12:50:38',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e9e62ff7735e19584',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2014-05-09 12:27:02',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e26dabcc3bc72fcf6',
-                        'userId': 1,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2014-02-23 08:51:59',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7eb4d2abcfe0e59942',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2016-03-03 02:01:54',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7eaba87d9adb07af4d',
-                        'userId': 1,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2017-03-17 01:32:14',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e2d75502dfe67567a',
-                        'userId': 1,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2016-03-16 12:38:47',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7ed3517869dc4ddd56',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2016-08-28 01:21:13',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e00372c1f7c2bfccb',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2015-05-20 05:37:47',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7ee9ff89723147e2b9',
-                        'userId': 1,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2015-11-17 06:15:13',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e9c0e0a85fa24a9ec',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2017-08-26 02:25:43',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7ecde5145033df6516',
-                        'userId': 1,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2015-01-20 02:28:31',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e09b9fc0db1e68c3b',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2016-08-27 11:19:42',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e46c712100733ed66',
-                        'userId': 1,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2017-03-01 03:52:54',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e7b8e38e185455848',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2018-08-30 09:16:01',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e4100d55c53e53beb',
-                        'userId': 1,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2018-08-31 04:06:12',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7ef85403196778be4f',
-                        'userId': 2,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2015-07-11 12:33:06',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7ef3bf36d15b80113e',
-                        'userId': 1,
-                        'userName': 'green',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2017-01-08 10:59:55',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    },
-                    {
-                        'id': '5b88ed7e6753575975d0d0d9',
-                        'userId': 2,
-                        'userName': 'blue',
-                        'message': 'Đây là message',
-                        'type': 'text',
-                        'time': '2015-07-13 10:33:33',
-                        'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-                    }
-                ]
-            }
-        },
-        methods: {
-            scollMessageList () {
-                if (this.$refs['message-box'].scrollTop === 0) {
-                    console.log(123)
-                }
-            },
-            showLiDateMessage(index){
-                if(index < (this.messageSorted.length - 1))
-                {
-                    let dC = new Date(this.messages[index].time)
-                    let dP = new Date(this.messages[index+1].time)
-                    dC = dC.getFullYear()+dC.getMonth()+dC.getDate()+'/'
-                    dP = dP.getFullYear()+dP.getMonth()+dP.getDate()+'/'
-                    if(dC != dP)
-                    {
-                        return true
-                    }
-                }
-                return false
-            },
-            coverTime(d){
-                d = new Date(d)
-                let curr = new Date()
-                let dTime = d.getTime()
-                let cTime = curr.getTime()
-                if(cTime > dTime)
-                {
-                    let m = parseInt(((cTime-dTime) / (1000 * 60 * 60)))
-                    if( m < 24)
-                    {
-                        return m+' giờ trước'
-                    }
-                    else{
-                        m = parseInt(m / 24)
-                        if(m < 2)
-                        {
-                            return 'Hôm qua '+d.getHours()+':'+d.getMinutes()+' '+d.getSeconds()
-                        }
-                    }
-                }
-                return d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear() + ' '+d.getHours()+':'+d.getMinutes()+' '+d.getSeconds()
-            },
-            coverDate(index){
-                if(index < (this.messageSorted.length - 1))
-                {
-                    var d = this.messageSorted[index + 1].time
-                    d = new Date(d)
-                    let curr = new Date()
-                    let dTime = d.getTime()
-                    let cTime = curr.getTime()
-                    if(cTime > dTime)
-                    {
-                        let m = parseInt(((cTime-dTime) / (1000 * 60 * 60)))
-                        m = parseInt(m / 24)
-                        if(m  == 1)
-                        {
-                            return 'Hôm qua'
-                        }
-                        if(m == 0)
-                        {
-                            return 'Hôm nay'
-                        }
-                    }
-                    return d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()
-                }
-            },
-        }
+import $ from 'jquery'
+export default {
+  updated () {
+    this.$nextTick(function () {
+      this.offsetHeightPopTagMember = document.getElementsByClassName('pop-tag-member').item(0).offsetHeight
+    })
+  },
+  computed: {
+    messageSorted () {
+      return this.messages.sort(function (a, b) {
+        var c = new Date(a.time)
+        var d = new Date(b.time)
+        return c.getTime() - d.getTime()
+      })
     }
+  },
+  watch: {
+    textMessage (newText) {
+      let arrayText = newText.split('').reverse()
+      if (arrayText[0] === '@') {
+        this.showTagMember = true
+        let count = this.searchMemberTagToMessage.length
+        count = count * 54
+        console.dir(document.getElementsByClassName('pop-tag-member').item(0))
+        document.getElementsByClassName('pop-tag-member').item(0).style.top = (520 - count).toString() + 'px'
+      } else {
+        this.showTagMember = false
+      }
+    },
+    offsetHeightPopTagMember (value) {
+      if (value === 300) {
+        document.getElementsByClassName('pop-tag-member').item(0).style.top = '240px'
+      }
+    }
+  },
+  mounted () {
+    this.$refs['message-box'].scrollTop = this.$refs['message-box'].scrollHeight
+    let element, name, arr
+    element = document.body
+    name = 'sidebar-xs'
+    arr = element.className.split(' ')
+    if (arr.indexOf(name) === -1) {
+      element.className += ' ' + name
+    }
+    let WDWidth = $(window).width()
+    let wt = 50
+    if (WDWidth < 769) {
+      wt = 30
+    }
+    $('.media-body').hover(function () {
+      let widthP = $(this).width()
+      let widthC = $(this).children('.media-content').width()
+      let paddingLeft = $(this).children('.media-content').css('padding-left')
+      let paddingRight = $(this).children('.media-content').css('padding-right')
+      $(this).find('.message-more-left').show()
+      $(this).find('.message-more-left').css('margin-left', (widthP - widthC - wt - parseFloat(paddingLeft)) + 'px')
+      $(this).find('.message-more-right').show()
+      $(this).find('.message-more-right').css('margin-right', (widthP - widthC - wt - parseFloat(paddingRight)) + 'px')
+    })
+    $('.media-body').mouseleave(function () {
+      $(this).find('.message-more-left').hide()
+      $(this).find('.message-more-right').hide()
+    })
+  },
+  data () {
+    return {
+      textMessage: '',
+      showTagMember: false,
+      searchMemberTagToMessage: [
+        {
+          id: 1,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 2,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 3,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 4,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 5,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 6,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          id: 7,
+          name: 'Cường Đào',
+          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        }
+      ],
+      offsetHeightPopTagMember: 0,
+      messages: [
+        {
+          'id': '5b88ed7eb5974b716ea92ec3',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2014-08-09 07:32:36',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e4c70d68bc6399c50',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2018-08-31 09:51:03',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e779ebc109fe3e4f7',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2017-07-25 12:50:38',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e9e62ff7735e19584',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2014-05-09 12:27:02',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e26dabcc3bc72fcf6',
+          'userId': 1,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2014-02-23 08:51:59',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7eb4d2abcfe0e59942',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2016-03-03 02:01:54',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7eaba87d9adb07af4d',
+          'userId': 1,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2017-03-17 01:32:14',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e2d75502dfe67567a',
+          'userId': 1,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2016-03-16 12:38:47',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7ed3517869dc4ddd56',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2016-08-28 01:21:13',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e00372c1f7c2bfccb',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2015-05-20 05:37:47',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7ee9ff89723147e2b9',
+          'userId': 1,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2015-11-17 06:15:13',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e9c0e0a85fa24a9ec',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2017-08-26 02:25:43',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7ecde5145033df6516',
+          'userId': 1,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2015-01-20 02:28:31',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e09b9fc0db1e68c3b',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2016-08-27 11:19:42',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e46c712100733ed66',
+          'userId': 1,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2017-03-01 03:52:54',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e7b8e38e185455848',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2018-08-30 09:16:01',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e4100d55c53e53beb',
+          'userId': 1,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2018-08-31 04:06:12',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7ef85403196778be4f',
+          'userId': 2,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2015-07-11 12:33:06',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7ef3bf36d15b80113e',
+          'userId': 1,
+          'userName': 'green',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2017-01-08 10:59:55',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        },
+        {
+          'id': '5b88ed7e6753575975d0d0d9',
+          'userId': 2,
+          'userName': 'blue',
+          'message': 'Đây là message',
+          'type': 'text',
+          'time': '2015-07-13 10:33:33',
+          'userAvatar': 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        }
+      ]
+    }
+  },
+  methods: {
+    scollMessageList () {
+      if (this.$refs['message-box'].scrollTop === 0) {
+        console.log(123)
+      }
+    },
+    showLiDateMessage (index) {
+      if (index < (this.messageSorted.length - 1)) {
+        let dC = new Date(this.messages[index].time)
+        let dP = new Date(this.messages[index + 1].time)
+        dC = dC.getFullYear() + dC.getMonth() + dC.getDate() + '/'
+        dP = dP.getFullYear() + dP.getMonth() + dP.getDate() + '/'
+        if (dC != dP) {
+          return true
+        }
+      }
+      return false
+    },
+    coverTime (d) {
+      d = new Date(d)
+      let curr = new Date()
+      let dTime = d.getTime()
+      let cTime = curr.getTime()
+      if (cTime > dTime) {
+        let m = parseInt(((cTime - dTime) / (1000 * 60 * 60)))
+        if (m < 24) {
+          return m + ' giờ trước'
+        } else {
+          m = parseInt(m / 24)
+          if (m < 2) {
+            return 'Hôm qua ' + d.getHours() + ':' + d.getMinutes() + ' ' + d.getSeconds()
+          }
+        }
+      }
+      return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ' ' + d.getSeconds()
+    },
+    coverDate (index) {
+      if (index < (this.messageSorted.length - 1)) {
+        var d = this.messageSorted[index + 1].time
+        d = new Date(d)
+        let curr = new Date()
+        let dTime = d.getTime()
+        let cTime = curr.getTime()
+        if (cTime > dTime) {
+          let m = parseInt(((cTime - dTime) / (1000 * 60 * 60)))
+          m = parseInt(m / 24)
+          if (m == 1) {
+            return 'Hôm qua'
+          }
+          if (m == 0) {
+            return 'Hôm nay'
+          }
+        }
+        return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear()
+      }
+    }
+  }
+}
 </script>
 <style>
     .tag-member > li {
