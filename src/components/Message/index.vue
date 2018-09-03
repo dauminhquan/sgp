@@ -521,9 +521,8 @@ export default {
       if (blob !== null) {
         var reader = new FileReader()
         reader.onload = function (event) {
-          console.log(event.target.result) // data url!
-          // document.getElementById("pastedImage").src = event.target.result;
           vm.$refs['content-chat'].innerHTML += '<img style="width: 100%" src="' + event.target.result + '"></img>'
+          vm.textMessage = vm.$refs['content-chat'].innerHTML
         }
         reader.readAsDataURL(blob)
       }
@@ -768,7 +767,7 @@ export default {
         this.textMessage = null
         return false
       }
-      this.textMessage = e.target.innerText
+      this.textMessage = e.target.innerHTML
     },
     keyUpTextMessageContent (e) {
       if (e.keyCode == 38) {
@@ -950,7 +949,8 @@ export default {
     }
     .content-box-chat{
         min-height: 100px;
-        overflow-y: scroll
+        overflow-y: scroll;
+        resize: both;
     }
     .quoter-message{
         background-color: rgba(142,204,182,0.61);
