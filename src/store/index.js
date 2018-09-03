@@ -7,16 +7,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    a: 'x'
+    location: null
   },
   getters: {
-    getX: (state) => {
-      return state.a
+    getLocation (state) {
+      return state.location
     }
   },
   mutations: {
-    setA: (state, {x}) => {
-      state.x = x
+    setLocation (state, location) {
+      state.location = location
     }
   },
   modules: {

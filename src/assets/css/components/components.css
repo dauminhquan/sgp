@@ -18789,7 +18789,28 @@ thead .htCollapseButton:after {
 .chat-list,
 .chat-stacked {
   max-height: 520px;
-  overflow: auto;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.chat-list::-webkit-scrollbar {
+  width: 5px;
+}
+.chat-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+.chat-list-white::-webkit-scrollbar-thumb {
+  background: white;
+}
+.chat-list-white::-webkit-scrollbar-track {
+  background: white;
+}
+.chat-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 .chat-list .media-left {
   padding-right: 20px;

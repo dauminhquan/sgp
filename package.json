@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "block-ui": "^2.70.1",
     "bootstrap": "^3.3.7",
     "bootstrap3": "^3.3.5",
@@ -21,6 +22,7 @@
     "jquery": "^3.3.1",
     "npm": "^6.4.0",
     "pace": "0.0.4",
+    "pnotify": "^4.0.0-alpha.4",
     "style-loader": "^0.22.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",

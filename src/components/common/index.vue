@@ -1009,7 +1009,9 @@
 </template>
 <script>
 import $ from 'jquery'
+import store from './../../store'
 export default {
+    store,
   /* beforeRouteUpdate (to, from, next) {
     $('.navigation-main').children('li').removeClass('active')
   }, */
