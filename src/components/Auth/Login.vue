@@ -127,96 +127,67 @@
     </div>
 </template>
 <script>
-import $ from 'jquery'
-import axios from 'axios'
-import qs from 'qs'
-export default {
-  computed: {
-    checked () {
-      if (this.remember == true) {
-        return 'checked'
-      }
-      return null
-    }
-  },
-  mounted () {
-    if (!$('body').hasClass('login-container')) {
-      $('body').addClass('login-container')
-    }
-    if (localStorage.getItem('token-app-chat') != undefined && localStorage.getItem('token-app-chat') != null) {
-      this.checkLogined()
-    }
-  },
-  data () {
-    return {
-      remember: false,
-      email: null,
-      password: null,
-      textError: null,
-      waitingLogin: false
-    }
-  },
-  methods: {
-    pushHome () {
-      this.$router.push({name: 'home'})
-    },
-    login () {
-      let vm = this
-      vm.waitingLogin = true
-      vm.textError = null
-      axios({
-        url: 'http://localhost:3000/login',
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+    import $ from 'jquery'
+    import axios from './../../axios'
+    import qs from 'qs'
+    export default {
+        computed: {
+            checked () {
+                if (this.remember == true) {
+                    return 'checked'
+                }
+                return null
+            }
         },
-        data: qs.stringify({
-          email: vm.email,
-          password: vm.password
-        })
-      }).then(data => {
-        localStorage.setItem('token-app-chat', data.data.token)
-        vm.$store.commit('setToken', data.data.token)
-        // lay danh sach group tham gia
-        // lay danh sach project tham gia
-        vm.pushHome()
-        vm.waitingLogin = false
-      }).catch(err => {
-        console.log(err)
-        vm.textError = 'Tài khoản hoặc mật khẩu không đúng'
-        vm.waitingLogin = false
-      })
-    },
-    getGroups () {
-    },
-    checkLogined () {
-      let vm = this
-      axios({
-        url: 'http://localhost:3000/auth',
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'token-app-chat': '123'
+        mounted () {
+            if (!$('body').hasClass('login-container')) {
+                $('body').addClass('login-container')
+            }
+        },
+        data () {
+            return {
+                remember: false,
+                email: null,
+                password: null,
+                textError: null,
+                waitingLogin: false
+            }
+        },
+        methods: {
+            pushHome () {
+                this.$router.push({name: 'home'})
+            },
+            login () {
+                let vm = this
+                vm.waitingLogin = true
+                vm.textError = null
+                console.log(vm.$store.getters.getLocation)
+                axios({
+                    url: 'http://localhost:3000/login',
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: qs.stringify({
+                        email: vm.email,
+                        password: vm.password
+                    })
+                }).then(data => {
+                    localStorage.setItem('Auth-Token', data.data.user.token)
+                    vm.$store.commit('setToken', data.data.user.token)
+                    vm.$store.commit('setUser',data.data.user)
+                    vm.pushHome()
+                    vm.waitingLogin = false
+                }).catch(err => {
+                    console.log(err)
+                    vm.textError = 'Tài khoản hoặc mật khẩu không đúng'
+                    vm.waitingLogin = false
+                })
+            },
+            getGroups () {
+            }
         }
-      }).then(data => {
-        vm.pushHome()
-      }).catch(err => {
-        console.log('Token không chính xác')
-      })
-      // axios({
-      //   url: 'http://localhost:3000/login',
-      //   method: 'post',
-      //   headers: {
-      //     'Content-Type': 'application/x-www-form-urlencoded',
-      //     'Auth-Token': localStorage.getItem(['token-app-chat'])
-      //   },
-      //   data: {
-      //
-      //   }
-      // })
     }
-  }
-}
 </script>
 <style>
     .waiting-login{

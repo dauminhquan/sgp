@@ -27,7 +27,7 @@
                                                 <img :src="member.avatar" class="img-circle" alt="">
                                             </div>
                                             <div class="media-body">
-                                                @{{member.name}}
+                                                {{member.username}}
                                             </div>
                                         </a>
                                     </li>
@@ -104,7 +104,7 @@
                             <a :href="null" class="media-link">
                                 <div class="media-left"><img :src="member.avatar" class="img-circle" alt=""></div>
                                 <div class="media-body">
-                                    <span class="media-heading text-semibold">{{member.name}}</span>
+                                    <span class="media-heading text-semibold">{{member.username}}</span>
                                     <span class="text-size-small text-muted display-block">#{{member.id}}</span>
                                 </div>
                                 <div class="media-right media-middle">
@@ -375,6 +375,33 @@
 <script>
 import $ from 'jquery'
 export default {
+    computed: {
+        _groupId(){
+            let vm = this
+            let group = vm.$store.getters['room/getGroups'].find(item => {
+                return item.id == vm.$route.params.id
+            })
+            if(group != undefined)
+            {
+                return group._id
+            }
+            return null
+        },
+        members(){
+            let vm = this
+            let user = vm.$store.getters.getUser
+            let group = vm.$store.getters['room/getGroups'].find(item => {
+                return item.id == vm.$route.params.id
+            })
+            if(group != undefined)
+            {
+                return group.members.filter(mem => {
+                    return mem.id != user.id
+                })
+            }
+            return []
+        }
+    },
   watch: {
     newGroupName (name) {
       if (name === '@') {
@@ -390,43 +417,6 @@ export default {
       subMenuAddUser: false,
       newGroupName: null,
       usersRequest: [
-        {
-          id: 1,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 2,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 3,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 4,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 5,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 6,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 7,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        }
-      ],
-      members: [
         {
           id: 1,
           name: 'Cường Đào',

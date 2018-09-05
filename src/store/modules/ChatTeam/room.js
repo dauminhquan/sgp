@@ -1,11 +1,11 @@
 const state = {
-  listIdUsers: [123]
+  groups: []
 }
 
 // getters
 const getters = {
-  getListUsers: (state, getters, rootState) => {
-    return rootState.listIdUsers
+  getGroups: (state) => {
+    return state.groups
   }
 }
 
@@ -16,25 +16,9 @@ const actions = {
 
 // mutations
 const mutations = {
-  pushProductToCart (state, { id }) {
-    state.items.push({
-      id,
-      quantity: 1
-    })
+  setGroups(state, groups) {
+    state.groups = groups
   },
-
-  incrementItemQuantity (state, { id }) {
-    const cartItem = state.items.find(item => item.id === id)
-    cartItem.quantity++
-  },
-
-  setCartItems (state, { items }) {
-    state.items = items
-  },
-
-  setCheckoutStatus (state, status) {
-    state.checkoutStatus = status
-  }
 }
 
 export default {

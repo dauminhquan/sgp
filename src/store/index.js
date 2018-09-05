@@ -6,27 +6,40 @@ Vue.use(Vuex)
 // const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
-  state: {
-    location: null,
-    token: null
-  },
-  getters: {
-    getLocation (state) {
-      return state.location
+    state: {
+        location: null,
+        token: null,
+        user: null
     },
-    getToken (state) {
-      return state.token
-    }
-  },
-  mutations: {
-    setLocation (state, location) {
-      state.location = location
+    getters: {
+        getLocation (state) {
+            return state.location
+        },
+        getToken (state) {
+            return state.token
+        },
+        getUser(state)
+        {
+            return state.user
+        }
     },
-    setToken (state, token) {
-      state.token = token
+    mutations: {
+        setLocation (state, location) {
+            state.location = location
+        },
+        setToken (state, token) {
+            state.token = token
+        },
+        setUser(state,user)
+        {
+            state.user = user
+        },
+        removeToken(state)
+        {
+          state.token = null
+        }
+    },
+    modules: {
+        room
     }
-  },
-  modules: {
-    room
-  }
 })

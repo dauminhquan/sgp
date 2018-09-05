@@ -217,7 +217,7 @@
                             <li><a :href="null"><span class="badge bg-teal-400 pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
                             <li class="divider"></li>
                             <li><a :href="null"><i class="icon-cog5"></i> Account settings</a></li>
-                            <li><a :href="null"><i class="icon-switch2"></i> Logout</a></li>
+                            <li><a :href="null" @click="logout"><i class="icon-switch2"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -256,9 +256,10 @@
                                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                                     <li class="active"><router-link :to="{name: 'home'}"><i class="icon-home4"></i> <span>Dashboard</span></router-link></li>
                                     <li>
-                                        <a :href="null"><i class="icon-users4"></i> <span>Chat group <span class="label bg-warning-400">20</span></span></a>
+                                        <a :href="null"><i class="icon-users4"></i> <span>Nhóm chat <span class="label bg-warning-400">20</span></span></a>
                                         <ul>
-                                            <li><router-link :to="{name : 'chat-team'}">Nhóm 1 <span class="label bg-warning-400">20</span></router-link></li>
+                                            <li><a :href="null" @click="showCreateGroup"><span>Tạo mới nhóm chat</span></a></li>
+                                            <li v-for="group in groups" :key="group.id"><router-link :to="{name : 'chat-team',params: { id: group.id}}">{{group.name}}<span class="label bg-warning-400">20</span></router-link></li>
                                         </ul>
                                     </li>
                                     <li>
@@ -1005,124 +1006,170 @@
                 </div>
             </div>
         </div>
+        <div id="common-modal-create-group" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h5 class="modal-title"><b>Tạo mới nhóm chat</b></h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <h6>Nhập tên nhóm chat: </h6>
+                        <input type="text" class="form-control" ref="input-new-group-name" v-model="newGroupName" title="Tên nhóm chat">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" @click="createGroup">Tạo mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
-import $ from 'jquery'
-import store from './../../store'
-export default {
-    store,
-  /* beforeRouteUpdate (to, from, next) {
-    $('.navigation-main').children('li').removeClass('active')
-  }, */
-  watch: {
-    '$route' (to, from) {
-      let node = $('.navigation-main').children('li').find('a[href="' + from.fullPath + '"]').parents('li[class="active"]')
-      $(node).removeClass('active')
-      $(node).find('ul.hidden-ul').hide()
-      $('.navigation-main').children('li').find('a[href="' + to.fullPath + '"]').parents('li').not('active').addClass('active')
-      $('body').removeClass('sidebar-mobile-main')
-    }
-  },
-  mounted () {
-    let node = $('.navigation-main').children('li[class="active"]')
-    $(node).removeClass('active')
-    $(node).find('ul.hidden-ul').hide()
-    node = $('.navigation-main').children('li').find('a[href="' + this.$route.fullPath + '"]').parents('li').not('active').addClass('active')
-    $(node).find('ul.hidden-ul').show()
-    $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
-      e.preventDefault()
-
-      $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).toggleClass('active').children('ul').slideToggle(250)
-
-      if ($('.navigation-main').hasClass('navigation-accordion')) {
-        $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(250)
-      }
-    })
-
-    // Toggle main sidebar
-    $('.sidebar-mobile-main-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
-    })
-
-    // Toggle opposite sidebar
-    $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
-    })
-
-    // Toggle detached sidebar
-    $('.sidebar-mobile-detached-toggle').on('click', function (e) {
-      e.preventDefault()
-      $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')
-    })
-
-    // Mobile sidebar setup
-    // -------------------------
-
-    $(window).on('resize', function () {
-      setTimeout(function () {
-        if ($(window).width() <= 768) {
-          // Add mini sidebar indicator
-          $('body').addClass('sidebar-xs-indicator')
-
-          // Place right sidebar before content
-          $('.sidebar-opposite').insertBefore('.content-wrapper')
-
-          // Place detached sidebar before content
-          $('.sidebar-detached').insertBefore('.content-wrapper')
-
-          // Add mouse events for dropdown submenus
-          $('.dropdown-submenu').on('mouseenter', function () {
-            $(this).children('.dropdown-menu').addClass('show')
-          }).on('mouseleave', function () {
-            $(this).children('.dropdown-menu').removeClass('show')
-          })
-        } else {
-          // Remove mini sidebar indicator
-          $('body').removeClass('sidebar-xs-indicator')
-
-          // Revert back right sidebar
-          $('.sidebar-opposite').insertAfter('.content-wrapper')
-
-          // Remove all mobile sidebar classes
-          $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite')
-
-          if ($('body').hasClass('has-detached-left')) {
-            $('.sidebar-detached').insertBefore('.container-detached')
+    import $ from 'jquery'
+    import axios from './../../axios'
+    export default {
+        computed:{
+          groups() {
+              return this.$store.getters['room/getGroups']
           }
+        },
+        watch: {
+            '$route' (to, from) {
+                let node = $('.navigation-main').children('li').find('a[href="' + from.fullPath + '"]').parents('li[class="active"]')
+                $(node).removeClass('active')
+                $(node).find('ul.hidden-ul').hide()
+                $('.navigation-main').children('li').find('a[href="' + to.fullPath + '"]').parents('li').not('active').addClass('active')
+                $('body').removeClass('sidebar-mobile-main')
+            }
+        },
+        mounted() {
+            let node = $('.navigation-main').children('li[class="active"]')
+            $(node).removeClass('active')
+            $(node).find('ul.hidden-ul').hide()
+            node = $('.navigation-main').children('li').find('a[href="' + this.$route.fullPath + '"]').parents('li').not('active').addClass('active')
+            $(node).find('ul.hidden-ul').show()
+            $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
+                e.preventDefault()
 
-          // Revert right detached position
-          else if ($('body').hasClass('has-detached-right')) {
-            $('.sidebar-detached').insertAfter('.container-detached')
-          }
+                $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).toggleClass('active').children('ul').slideToggle(250)
 
-          // Remove visibility of heading elements on desktop
-          $('.page-header-content, .panel-heading, .panel-footer').removeClass('has-visible-elements')
-          $('.heading-elements').removeClass('visible-elements')
+                if ($('.navigation-main').hasClass('navigation-accordion')) {
+                    $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(250)
+                }
+            })
 
-          // Disable appearance of dropdown submenus
-          $('.dropdown-submenu').children('.dropdown-menu').removeClass('show')
+            // Toggle main sidebar
+            $('.sidebar-mobile-main-toggle').on('click', function (e) {
+                e.preventDefault()
+                $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
+            })
+
+            // Toggle opposite sidebar
+            $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
+                e.preventDefault()
+                $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
+            })
+
+            // Toggle detached sidebar
+            $('.sidebar-mobile-detached-toggle').on('click', function (e) {
+                e.preventDefault()
+                $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')
+            })
+
+            // Mobile sidebar setup
+            // -------------------------
+
+            $(window).on('resize', function () {
+                setTimeout(function () {
+                    if ($(window).width() <= 768) {
+                        // Add mini sidebar indicator
+                        $('body').addClass('sidebar-xs-indicator')
+
+                        // Place right sidebar before content
+                        $('.sidebar-opposite').insertBefore('.content-wrapper')
+
+                        // Place detached sidebar before content
+                        $('.sidebar-detached').insertBefore('.content-wrapper')
+
+                        // Add mouse events for dropdown submenus
+                        $('.dropdown-submenu').on('mouseenter', function () {
+                            $(this).children('.dropdown-menu').addClass('show')
+                        }).on('mouseleave', function () {
+                            $(this).children('.dropdown-menu').removeClass('show')
+                        })
+                    } else {
+                        // Remove mini sidebar indicator
+                        $('body').removeClass('sidebar-xs-indicator')
+
+                        // Revert back right sidebar
+                        $('.sidebar-opposite').insertAfter('.content-wrapper')
+
+                        // Remove all mobile sidebar classes
+                        $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite')
+
+                        if ($('body').hasClass('has-detached-left')) {
+                            $('.sidebar-detached').insertBefore('.container-detached')
+                        }
+
+                        // Revert right detached position
+                        else if ($('body').hasClass('has-detached-right')) {
+                            $('.sidebar-detached').insertAfter('.container-detached')
+                        }
+
+                        // Remove visibility of heading elements on desktop
+                        $('.page-header-content, .panel-heading, .panel-footer').removeClass('has-visible-elements')
+                        $('.heading-elements').removeClass('visible-elements')
+
+                        // Disable appearance of dropdown submenus
+                        $('.dropdown-submenu').children('.dropdown-menu').removeClass('show')
+                    }
+                }, 100)
+            }).resize()
+        },
+        data(){
+            return {
+                newGroupName: null
+            }
+        },
+        methods: {
+            containerHeight () {
+                let element, name, arr
+                element = document.body
+                name = 'sidebar-xs'
+                arr = element.className.split(' ')
+                if (arr.indexOf(name) === -1) {
+                    element.className += ' ' + name
+                } else {
+                    element.className = element.className.replace(/ sidebar-xs/g, '')
+                    element.className = element.className.replace(/sidebar-xs/g, '')
+                    element.className = element.className.replace(/sidebar-xs /g, '')
+                }
+            },
+            logout(){
+                localStorage.removeItem('Auth-Token')
+                this.$store.commit('setUser',null)
+                this.$store.commit('setToken',null)
+                this.$router.push({
+                    name: 'login'
+                })
+            },
+            showCreateGroup(){
+                $('#common-modal-create-group').modal('show')
+            },
+            createGroup(){
+                axios.post('http://localhost:3000/groups',{
+                    a: 'a'
+                }).then(data => {
+                    console.log(data)
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
         }
-      }, 100)
-    }).resize()
-  },
-  methods: {
-    containerHeight () {
-      let element, name, arr
-      element = document.body
-      name = 'sidebar-xs'
-      arr = element.className.split(' ')
-      if (arr.indexOf(name) === -1) {
-        element.className += ' ' + name
-      } else {
-        element.className = element.className.replace(/ sidebar-xs/g, '')
-        element.className = element.className.replace(/sidebar-xs/g, '')
-        element.className = element.className.replace(/sidebar-xs /g, '')
-      }
     }
-  }
-}
 </script>
 
