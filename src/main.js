@@ -5,8 +5,11 @@ import router from './router'
 import 'pnotify/dist/es/PNotifyButtons'
 import 'pnotify/dist/es/PNotifyMobile'
 import axios from 'axios'
+import VueSocketio from 'vue-socket.io'
 Vue.config.productionTip = false
 Vue.use(store)
+Vue.use(VueSocketio, 'http://localhost:3000')
+const tokenApp = 'token-app'
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

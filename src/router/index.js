@@ -4,15 +4,20 @@ import HelloWorld from '@/components/HelloWorld'
 import Common from '@/components/common'
 import Group from '@/components/Group'
 import ChatTeam from '@/components/ChatTeam/index'
+
 import SidebarSecondary from '@/components/ChatTeam/components/sidebar-secondary'
 import ControlSidebarSecondary from '@/components/ChatTeam/components/control-sidebar-secondary'
 import sidebarMobileSecondaryToggle from '@/components/ChatTeam/components/sidebar-mobile-secondary-toggle'
+
 import Messages from '@/components/Message/index'
 import SidebarSecondaryMessage from '@/components/Message/components/sidebar-secondary'
+import Login from '@/components/Auth/Login'
+
 import $ from 'jquery'
 import 'bootstrap'
 import 'block-ui'
 import 'pace'
+const keyTokenStore = 'token-app-chat'
 Vue.use(Router)
 function init () {
   $(window).on('load', function () {
@@ -423,11 +428,22 @@ let RT = new Router({
           }
         }
       ]
+    },
+    {
+      path: '/login',
+      component: Login,
+      name: 'login'
     }
   ]
   /* mode: 'history' */
 })
 RT.afterEach((to, from) => {
+  if (to.name != 'Login') {
+      $('body').removeClass('login-container')
+    if (localStorage.getItem(keyTokenStore) == undefined) {
+      RT.push({name: 'login'})
+    }
+  }
   init()
 })
 export default RT

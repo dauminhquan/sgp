@@ -220,6 +220,9 @@ export default {
     }
   },
   mounted () {
+    this.$socket.on('test', function (data) {
+      console.log(data)
+    })
     if (window.innerWidth < 769) {
       this.modeMobile = true
     }
