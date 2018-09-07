@@ -65,9 +65,10 @@
                             </ul>
                         </li>
                         <li><a :href="null" @click="showModalCreate"><i class="icon-users"></i> Tạo mới nhóm chat</a></li>
+                        <li><a :href="null" @click="showModalGetOutGroupChat"><i class="glyphicon glyphicon-log-out"></i> Thoát khỏi nhóm chat</a></li>
                         <li class="navigation-divider"></li>
-                        <li><a :href="null"><i class="icon-file-plus"></i> Yêu cầu vào nhóm chat <span class="badge badge-danger">32</span></a>
-                            <ul class="navigation menu-scollbar">
+                        <li><a :href="null" @click="showListUserRequire = !showListUserRequire"><i class="icon-file-plus"></i> Yêu cầu vào nhóm chat <span class="badge badge-danger">32</span></a>
+                            <span :class="showListUserRequire == false?'navigation menu-scollbar hide-menu-user-require' : 'navigation menu-scollbar show-menu-user-require'">
                                 <div class="pop-users-request-content">
                                     <li v-for="user in usersRequest" :key="user.id">
                                         <div class="pop-users-request-item">
@@ -80,7 +81,7 @@
                                         </div>
                                     </li>
                                 </div>
-                            </ul>
+                            </span>
                         </li>
                         <li><a :href="null" @click="showCloseGroupModal"><i class="icon-file-locked"></i> Đóng nhóm chat</a></li>
                         <li><a :href="null" @click="showDeleteGroupModal"><i class="icon-trash"></i> Xóa nhóm chat</a></li>
@@ -237,22 +238,25 @@
         </div>
         <div id="modal-create-group" class="modal fade">
             <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h5 class="modal-title"><b>Tạo mới nhóm chat</b></h5>
-                    </div>
+                <form @submit.prevent="createGroup">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h5 class="modal-title"><b>Tạo mới nhóm chat</b></h5>
+                        </div>
 
-                    <div class="modal-body">
-                        <h6>Nhập tên nhóm chat: </h6>
-                        <input type="text" class="form-control" ref="input-new-group-name" @focus="forcusInputNewGroupName" v-model="newGroupName" data-popup="popover" data-placement="top" popover-title="bg-teal-400" title="Tên nhóm chat" data-trigger="focus" data-content="Vui lòng điền đầy đủ tên nhóm chat">
-                    </div>
+                        <div class="modal-body">
+                            <h6>Nhập tên nhóm chat: </h6>
+                            <input type="text" class="form-control" required ref="input-new-group-name" @focus="forcusInputNewGroupName" v-model="newGroupName" data-popup="popover" data-placement="top" popover-title="bg-teal-400" title="Tên nhóm chat" data-trigger="focus" data-content="Vui lòng điền đầy đủ tên nhóm chat">
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Tạo mới</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                            <button type="submit"class="btn btn-primary">Tạo mới</button>
+                        </div>
+
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div id="modal-close-group" class="modal fade">
@@ -274,6 +278,27 @@
                 </div>
             </div>
         </div>
+    <div id="modal-get-out-group-chat" class="modal fade">
+        <div class="modal-dialog">
+            <form @submit.prevent="getOutGroupChat">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning-400">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h6 class="modal-title"><i class="fa fa-warning"></i> Lưu ý</h6>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Bạn chắc chắn chứ.</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-warning">Rời nhóm</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
         <div id="modal-delete-group" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -374,34 +399,34 @@
 </template>
 <script>
 import $ from 'jquery'
+import axios from './../../../axios'
+import PNotify from 'pnotify/dist/es/PNotifyCompat'
 export default {
-    computed: {
-        _groupId(){
-            let vm = this
-            let group = vm.$store.getters['room/getGroups'].find(item => {
-                return item.id == vm.$route.params.id
-            })
-            if(group != undefined)
-            {
-                return group._id
-            }
-            return null
-        },
-        members(){
-            let vm = this
-            let user = vm.$store.getters.getUser
-            let group = vm.$store.getters['room/getGroups'].find(item => {
-                return item.id == vm.$route.params.id
-            })
-            if(group != undefined)
-            {
-                return group.members.filter(mem => {
-                    return mem.id != user.id
-                })
-            }
-            return []
-        }
+  computed: {
+    _groupId () {
+      let vm = this
+      let group = vm.$store.getters['room/getGroups'].find(item => {
+        return item.id == vm.$route.params.id
+      })
+      if (group != undefined) {
+        return group._id
+      }
+      return null
     },
+    members () {
+      let vm = this
+      let user = vm.$store.getters.getUser
+      let group = vm.$store.getters['room/getGroups'].find(item => {
+        return item.id == vm.$route.params.id
+      })
+      if (group != undefined) {
+        return group.members.filter(mem => {
+          return mem.id != user.id
+        })
+      }
+      return []
+    }
+  },
   watch: {
     newGroupName (name) {
       if (name === '@') {
@@ -414,6 +439,7 @@ export default {
   },
   data () {
     return {
+      showListUserRequire: false,
       subMenuAddUser: false,
       newGroupName: null,
       usersRequest: [
@@ -463,6 +489,9 @@ export default {
     showModalCreate () {
       $('#modal-create-group').modal('show')
     },
+    showModalGetOutGroupChat () {
+      $('#modal-get-out-group-chat').modal('show')
+    },
     showCloseGroupModal () {
       $('#modal-close-group').modal('show')
     },
@@ -488,6 +517,73 @@ export default {
       let vm = this
       vm.usersRequest = vm.usersRequest.filter(item => {
         return item.id !== id
+      })
+    },
+    createGroup () {
+      let vm = this
+      axios.post('http://localhost:3000/groups', {
+        name: vm.newGroupName
+      }).then(data => {
+        $('#modal-create-group').modal('hide')
+        PNotify.notice({
+          title: 'Thành công',
+          text: 'Tạo nhóm chát thành công.',
+          icon: 'icon-success',
+          addClass: 'bg-success',
+          text_escape: true
+        })
+        vm.$router.push({
+          name: 'chat-team',
+          params: {
+            id: data.data.id
+          }
+        })
+        vm.newGroupName = null
+        axios.get(`http://localhost:3000/users/groups`).then(dt => {
+          vm.$store.commit('room/setGroups', dt.data.groups)
+        }).catch(err => {
+          console.log(err)
+        })
+      }).catch(err => {
+        console.log(err)
+        PNotify.notice({
+          title: 'Thất bại',
+          text: 'Đã có lỗi xảy ra.',
+          icon: 'icon-warning',
+          addClass: 'bg-danger-400',
+          text_escape: true
+        })
+      })
+    },
+    getOutGroupChat () {
+      let vm = this
+      axios.post(`http://localhost:3000/groups/get-out/${vm.$route.params.id}`).then(data => {
+        $('#modal-get-out-group-chat').modal('hide')
+        PNotify.notice({
+          title: 'Thành công',
+          text: 'Rời khỏi nhóm chat thành công.',
+          icon: 'icon-success',
+          addClass: 'bg-success',
+          text_escape: true
+        })
+        vm.$router.push({
+          name: 'home'
+        })
+        vm.newGroupName = null
+        axios.get(`http://localhost:3000/users/groups`).then(dt => {
+          vm.$store.commit('room/setGroups', dt.data.groups)
+        }).catch(err => {
+          console.log(err)
+        })
+      }).catch(err => {
+        console.log(err)
+        PNotify.notice({
+          title: 'Thất bại',
+          text: 'Đã có lỗi xảy ra.',
+          icon: 'icon-warning',
+          addClass: 'bg-danger-400',
+          text_escape: true
+        })
       })
     }
   },
@@ -568,5 +664,11 @@ export default {
     .pop-search-user::-webkit-scrollbar-thumb {
         background: #888;
         border-radius: 10px;
+    }
+    .hide-menu-user-require{
+        display: none !important;
+    }
+    .show-menu-user-require{
+        display: block !important;
     }
 </style>

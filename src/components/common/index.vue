@@ -1029,147 +1029,174 @@
     </div>
 </template>
 <script>
-    import $ from 'jquery'
-    import axios from './../../axios'
-    export default {
-        computed:{
-          groups() {
-              return this.$store.getters['room/getGroups']
-          }
-        },
-        watch: {
-            '$route' (to, from) {
-                let node = $('.navigation-main').children('li').find('a[href="' + from.fullPath + '"]').parents('li[class="active"]')
-                $(node).removeClass('active')
-                $(node).find('ul.hidden-ul').hide()
-                $('.navigation-main').children('li').find('a[href="' + to.fullPath + '"]').parents('li').not('active').addClass('active')
-                $('body').removeClass('sidebar-mobile-main')
-            }
-        },
-        mounted() {
-            let node = $('.navigation-main').children('li[class="active"]')
-            $(node).removeClass('active')
-            $(node).find('ul.hidden-ul').hide()
-            node = $('.navigation-main').children('li').find('a[href="' + this.$route.fullPath + '"]').parents('li').not('active').addClass('active')
-            $(node).find('ul.hidden-ul').show()
-            $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
-                e.preventDefault()
-
-                $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).toggleClass('active').children('ul').slideToggle(250)
-
-                if ($('.navigation-main').hasClass('navigation-accordion')) {
-                    $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(250)
-                }
-            })
-
-            // Toggle main sidebar
-            $('.sidebar-mobile-main-toggle').on('click', function (e) {
-                e.preventDefault()
-                $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
-            })
-
-            // Toggle opposite sidebar
-            $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
-                e.preventDefault()
-                $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
-            })
-
-            // Toggle detached sidebar
-            $('.sidebar-mobile-detached-toggle').on('click', function (e) {
-                e.preventDefault()
-                $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')
-            })
-
-            // Mobile sidebar setup
-            // -------------------------
-
-            $(window).on('resize', function () {
-                setTimeout(function () {
-                    if ($(window).width() <= 768) {
-                        // Add mini sidebar indicator
-                        $('body').addClass('sidebar-xs-indicator')
-
-                        // Place right sidebar before content
-                        $('.sidebar-opposite').insertBefore('.content-wrapper')
-
-                        // Place detached sidebar before content
-                        $('.sidebar-detached').insertBefore('.content-wrapper')
-
-                        // Add mouse events for dropdown submenus
-                        $('.dropdown-submenu').on('mouseenter', function () {
-                            $(this).children('.dropdown-menu').addClass('show')
-                        }).on('mouseleave', function () {
-                            $(this).children('.dropdown-menu').removeClass('show')
-                        })
-                    } else {
-                        // Remove mini sidebar indicator
-                        $('body').removeClass('sidebar-xs-indicator')
-
-                        // Revert back right sidebar
-                        $('.sidebar-opposite').insertAfter('.content-wrapper')
-
-                        // Remove all mobile sidebar classes
-                        $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite')
-
-                        if ($('body').hasClass('has-detached-left')) {
-                            $('.sidebar-detached').insertBefore('.container-detached')
-                        }
-
-                        // Revert right detached position
-                        else if ($('body').hasClass('has-detached-right')) {
-                            $('.sidebar-detached').insertAfter('.container-detached')
-                        }
-
-                        // Remove visibility of heading elements on desktop
-                        $('.page-header-content, .panel-heading, .panel-footer').removeClass('has-visible-elements')
-                        $('.heading-elements').removeClass('visible-elements')
-
-                        // Disable appearance of dropdown submenus
-                        $('.dropdown-submenu').children('.dropdown-menu').removeClass('show')
-                    }
-                }, 100)
-            }).resize()
-        },
-        data(){
-            return {
-                newGroupName: null
-            }
-        },
-        methods: {
-            containerHeight () {
-                let element, name, arr
-                element = document.body
-                name = 'sidebar-xs'
-                arr = element.className.split(' ')
-                if (arr.indexOf(name) === -1) {
-                    element.className += ' ' + name
-                } else {
-                    element.className = element.className.replace(/ sidebar-xs/g, '')
-                    element.className = element.className.replace(/sidebar-xs/g, '')
-                    element.className = element.className.replace(/sidebar-xs /g, '')
-                }
-            },
-            logout(){
-                localStorage.removeItem('Auth-Token')
-                this.$store.commit('setUser',null)
-                this.$store.commit('setToken',null)
-                this.$router.push({
-                    name: 'login'
-                })
-            },
-            showCreateGroup(){
-                $('#common-modal-create-group').modal('show')
-            },
-            createGroup(){
-                axios.post('http://localhost:3000/groups',{
-                    a: 'a'
-                }).then(data => {
-                    console.log(data)
-                }).catch(err => {
-                    console.log(err)
-                })
-            }
-        }
+import $ from 'jquery'
+import axios from './../../axios'
+import PNotify from 'pnotify/dist/es/PNotifyCompat'
+export default {
+  computed: {
+    groups () {
+      return this.$store.getters['room/getGroups']
     }
-</script>
+  },
+  watch: {
+    '$route' (to, from) {
+      let node = $('.navigation-main').children('li').find('a[href="' + from.fullPath + '"]').parents('li[class="active"]')
+      $(node).removeClass('active')
+      $(node).find('ul.hidden-ul').hide()
+      $('.navigation-main').children('li').find('a[href="' + to.fullPath + '"]').parents('li').not('active').addClass('active')
+      $('body').removeClass('sidebar-mobile-main')
+    }
+  },
+  mounted () {
+    let node = $('.navigation-main').children('li[class="active"]')
+    $(node).removeClass('active')
+    $(node).find('ul.hidden-ul').hide()
+    node = $('.navigation-main').children('li').find('a[href="' + this.$route.fullPath + '"]').parents('li').not('active').addClass('active')
+    $(node).find('ul.hidden-ul').show()
+    $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
+      e.preventDefault()
 
+      $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).toggleClass('active').children('ul').slideToggle(250)
+
+      if ($('.navigation-main').hasClass('navigation-accordion')) {
+        $(this).parent('li').not('.disabled').not($('.sidebar-xs').not('.sidebar-xs-indicator').find('.navigation-main').children('li')).siblings(':has(.has-ul)').removeClass('active').children('ul').slideUp(250)
+      }
+    })
+
+    // Toggle main sidebar
+    $('.sidebar-mobile-main-toggle').on('click', function (e) {
+      e.preventDefault()
+      $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
+    })
+
+    // Toggle opposite sidebar
+    $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
+      e.preventDefault()
+      $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
+    })
+
+    // Toggle detached sidebar
+    $('.sidebar-mobile-detached-toggle').on('click', function (e) {
+      e.preventDefault()
+      $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')
+    })
+
+    // Mobile sidebar setup
+    // -------------------------
+
+    $(window).on('resize', function () {
+      setTimeout(function () {
+        if ($(window).width() <= 768) {
+          // Add mini sidebar indicator
+          $('body').addClass('sidebar-xs-indicator')
+
+          // Place right sidebar before content
+          $('.sidebar-opposite').insertBefore('.content-wrapper')
+
+          // Place detached sidebar before content
+          $('.sidebar-detached').insertBefore('.content-wrapper')
+
+          // Add mouse events for dropdown submenus
+          $('.dropdown-submenu').on('mouseenter', function () {
+            $(this).children('.dropdown-menu').addClass('show')
+          }).on('mouseleave', function () {
+            $(this).children('.dropdown-menu').removeClass('show')
+          })
+        } else {
+          // Remove mini sidebar indicator
+          $('body').removeClass('sidebar-xs-indicator')
+
+          // Revert back right sidebar
+          $('.sidebar-opposite').insertAfter('.content-wrapper')
+
+          // Remove all mobile sidebar classes
+          $('body').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached sidebar-mobile-opposite')
+
+          if ($('body').hasClass('has-detached-left')) {
+            $('.sidebar-detached').insertBefore('.container-detached')
+          }
+
+          // Revert right detached position
+          else if ($('body').hasClass('has-detached-right')) {
+            $('.sidebar-detached').insertAfter('.container-detached')
+          }
+
+          // Remove visibility of heading elements on desktop
+          $('.page-header-content, .panel-heading, .panel-footer').removeClass('has-visible-elements')
+          $('.heading-elements').removeClass('visible-elements')
+
+          // Disable appearance of dropdown submenus
+          $('.dropdown-submenu').children('.dropdown-menu').removeClass('show')
+        }
+      }, 100)
+    }).resize()
+  },
+  data () {
+    return {
+      newGroupName: null
+    }
+  },
+  methods: {
+    containerHeight () {
+      let element, name, arr
+      element = document.body
+      name = 'sidebar-xs'
+      arr = element.className.split(' ')
+      if (arr.indexOf(name) === -1) {
+        element.className += ' ' + name
+      } else {
+        element.className = element.className.replace(/ sidebar-xs/g, '')
+        element.className = element.className.replace(/sidebar-xs/g, '')
+        element.className = element.className.replace(/sidebar-xs /g, '')
+      }
+    },
+    logout () {
+      localStorage.removeItem('Auth-Token')
+      this.$store.commit('setUser', null)
+      this.$store.commit('setToken', null)
+      this.$router.push({
+        name: 'login'
+      })
+    },
+    showCreateGroup () {
+      $('#common-modal-create-group').modal('show')
+    },
+    createGroup () {
+      let vm = this
+      axios.post('http://localhost:3000/groups', {
+        name: vm.newGroupName
+      }).then(data => {
+        $('#common-modal-create-group').modal('hide')
+        PNotify.notice({
+          title: 'Thành công',
+          text: 'Tạo nhóm chát thành công.',
+          icon: 'icon-success',
+          addClass: 'bg-success',
+          text_escape: true
+        })
+        vm.$router.push({
+          name: 'chat-team',
+          params: {
+            id: data.data.id
+          }
+        })
+        vm.newGroupName = null
+        axios.get(`http://localhost:3000/users/groups`).then(dt => {
+          vm.$store.commit('room/setGroups', dt.data.groups)
+        }).catch(err => {
+          console.log(err)
+        })
+      }).catch(err => {
+        console.log(err)
+        PNotify.notice({
+          title: 'Thất bại',
+          text: 'Đã có lỗi xảy ra.',
+          icon: 'icon-warning',
+          addClass: 'bg-danger-400',
+          text_escape: true
+        })
+      })
+    }
+  }
+}
+</script>
