@@ -1053,6 +1053,7 @@ export default {
     $(node).find('ul.hidden-ul').hide()
     node = $('.navigation-main').children('li').find('a[href="' + this.$route.fullPath + '"]').parents('li').not('active').addClass('active')
     $(node).find('ul.hidden-ul').show()
+      $('.navigation-main').find('li').has('ul').children('a').unbind('click')
     $('.navigation-main').find('li').has('ul').children('a').on('click', function (e) {
       e.preventDefault()
 
@@ -1064,18 +1065,21 @@ export default {
     })
 
     // Toggle main sidebar
+      $('.sidebar-mobile-main-toggle').unbind('click')
     $('.sidebar-mobile-main-toggle').on('click', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-opposite sidebar-mobile-detached')
     })
 
     // Toggle opposite sidebar
+      $('.sidebar-mobile-opposite-toggle').unbind('click')
     $('.sidebar-mobile-opposite-toggle').on('click', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-mobile-opposite').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-detached')
     })
 
     // Toggle detached sidebar
+      $('.sidebar-mobile-detached-toggle').unbind('click')
     $('.sidebar-mobile-detached-toggle').on('click', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-mobile-detached').removeClass('sidebar-mobile-main sidebar-mobile-secondary sidebar-mobile-opposite')

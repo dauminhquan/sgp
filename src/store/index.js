@@ -9,7 +9,8 @@ export default new Vuex.Store({
     state: {
         location: null,
         token: null,
-        user: null
+        user: null,
+        companyMembers: null
     },
     getters: {
         getLocation (state) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
         getUser(state)
         {
             return state.user
+        },
+        getCompanyMembers(state){
+            return state.companyMembers
         }
     },
     mutations: {
@@ -37,6 +41,9 @@ export default new Vuex.Store({
         removeToken(state)
         {
           state.token = null
+        },
+        setCompanyMembers(state,companyMembers){
+            state.companyMembers = companyMembers
         }
     },
     modules: {

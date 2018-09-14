@@ -25,7 +25,6 @@ function init () {
   $(window).on('load', function () {
     $('body').removeClass('no-transitions')
   })
-
   $(document).ready(function () {
     $('.panel-footer').has('> .heading-elements:not(.not-collapsible)').prepend('<a class="heading-elements-toggle"><i class="icon-more"></i></a>')
     $('.page-title, .panel-title').parent().has('> .heading-elements:not(.not-collapsible)').children('.page-title, .panel-title').append('<a class="heading-elements-toggle"><i class="icon-more"></i></a>')
@@ -59,17 +58,20 @@ function init () {
     // -------------------------
 
     // Prevent dropdown from closing on click
+      $('.dropdown-content').unbind('click')
     $(document).on('click', '.dropdown-content', function (e) {
       e.stopPropagation()
     })
 
     // Disabled links
+      $('.navbar-nav .disabled a').unbind('click')
     $('.navbar-nav .disabled a').on('click', function (e) {
       e.preventDefault()
       e.stopPropagation()
     })
 
     // Show tabs inside dropdowns
+      $('.dropdown-content a[data-toggle="tab"]').unbind('click')
     $('.dropdown-content a[data-toggle="tab"]').on('click', function (e) {
       $(this).tab('show')
     })
@@ -88,6 +90,7 @@ function init () {
     // -------------------------
 
     // Panels
+      $('.panel [data-action=reload]').unbind('click')
     $('.panel [data-action=reload]').click(function (e) {
       e.preventDefault()
       var block = $(this).parent().parent().parent().parent().parent()
@@ -113,6 +116,7 @@ function init () {
     })
 
     // Sidebar categories
+      $('.category-title [data-action=reload]').unbind('click')
     $('.category-title [data-action=reload]').click(function (e) {
       e.preventDefault()
       var block = $(this).parent().parent().parent().parent()
@@ -139,6 +143,7 @@ function init () {
     })
 
     // Light sidebar categories
+      $('.sidebar-default .category-title [data-action=reload]').unbind('click')
     $('.sidebar-default .category-title [data-action=reload]').click(function (e) {
       e.preventDefault()
       var block = $(this).parent().parent().parent().parent()
@@ -177,6 +182,7 @@ function init () {
     $('.category-collapsed').find('[data-action=collapse]').addClass('rotate-180')
 
     // Collapse on click
+      $('.category-title [data-action=collapse]').unbind('click')
     $('.category-title [data-action=collapse]').click(function (e) {
       e.preventDefault()
       var $categoryCollapse = $(this).parent().parent().parent().nextAll()
@@ -199,6 +205,7 @@ function init () {
     $('.panel-collapsed').find('[data-action=collapse]').addClass('rotate-180')
 
     // Collapse on click
+      $('.panel [data-action=collapse]').unbind('click')
     $('.panel [data-action=collapse]').click(function (e) {
       e.preventDefault()
       var $panelCollapse = $(this).parent().parent().parent().parent().nextAll()
@@ -214,6 +221,7 @@ function init () {
     // -------------------------
 
     // Panels
+      $('.panel [data-action=close]').unbind('click')
     $('.panel [data-action=close]').click(function (e) {
       e.preventDefault()
       var $panelClose = $(this).parent().parent().parent().parent().parent()
@@ -226,6 +234,7 @@ function init () {
     })
 
     // Sidebar categories
+      $('.category-title [data-action=close]').unbind('click')
     $('.category-title [data-action=close]').click(function (e) {
       e.preventDefault()
       var $categoryClose = $(this).parent().parent().parent().parent()
@@ -266,7 +275,7 @@ function init () {
       placement: 'right',
       container: 'body'
     })
-
+      $('.navigation-alt').find('li').has('ul').children('a').unbind('click')
     $('.navigation-alt').find('li').has('ul').children('a').on('click', function (e) {
       e.preventDefault()
 
@@ -279,22 +288,25 @@ function init () {
     })
 
     // Disable click in disabled navigation items
+      $('.navigation .disabled a').unbind('click')
     $(document).on('click', '.navigation .disabled a', function (e) {
       e.preventDefault()
     })
 
     // Hide main sidebar in Dual Sidebar
+      $('.sidebar-main-hide').unbind('click')
     $(document).on('click', '.sidebar-main-hide', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-main-hidden')
     })
-
+      $('.sidebar-detached-hide').unbind('click')
     $(document).on('click', '.sidebar-detached-hide', function (e) {
       e.preventDefault()
       $('body').toggleClass('sidebar-detached-hidden')
     })
 
     // Hide all sidebars
+      $('.sidebar-all-hide').unbind('click')
     $(document).on('click', '.sidebar-all-hide', function (e) {
       e.preventDefault()
 
@@ -306,6 +318,7 @@ function init () {
     //
 
     // Collapse main sidebar if opposite sidebar is visible
+      $('.sidebar-opposite-toggle').unbind('click')
     $(document).on('click', '.sidebar-opposite-toggle', function (e) {
       e.preventDefault()
 
@@ -326,6 +339,7 @@ function init () {
     })
 
     // Hide main sidebar if opposite sidebar is shown
+      $('.sidebar-opposite-main-hide').unbind('click')
     $(document).on('click', '.sidebar-opposite-main-hide', function (e) {
       e.preventDefault()
 
@@ -343,6 +357,7 @@ function init () {
     })
 
     // Hide secondary sidebar if opposite sidebar is shown
+      $('.sidebar-opposite-secondary-hide').unbind('click')
     $(document).on('click', '.sidebar-opposite-secondary-hide', function (e) {
       e.preventDefault()
 
@@ -360,6 +375,7 @@ function init () {
     })
 
     // Hide all sidebars if opposite sidebar is shown
+      $('.sidebar-opposite-hide').unbind('click')
     $(document).on('click', '.sidebar-opposite-hide', function (e) {
       e.preventDefault()
 
@@ -380,6 +396,7 @@ function init () {
     })
 
     // Keep the width of the main sidebar if opposite sidebar is visible
+      $('.sidebar-opposite-fix').unbind('click')
     $(document).on('click', '.sidebar-opposite-fix', function (e) {
       e.preventDefault()
 
@@ -443,7 +460,6 @@ RT.beforeEach((to, from, next) => {
   let token = localStorage.getItem('Auth-Token')
   if (token != undefined && token != null) {
     let user = store.getters.getUser
-
     if (to.name == 'login') {
       checkLogined(function (user) {
         if (from.name == null || from.name == undefined) {
@@ -460,9 +476,24 @@ RT.beforeEach((to, from, next) => {
       },next)
     } else if (user == null) {
       getInforUser(next)
-    } else {
-      next()
     }
+        if (store.getters['room/getGroups'].length == 0) {
+            axios.get(`http://localhost:3000/users/groups`).then(data => {
+                store.commit('room/setGroups', data.data.groups)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+        if(store.getters.getCompanyMembers == null || store.getters.getCompanyMembers.length == 0)
+        {
+            axios.get(`http://localhost:3000/companies/members`).then(data => {
+                store.commit('setCompanyMembers', data.data.members)
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+      next()
+
   } else {
     if (to.name == 'login') {
       next()
@@ -471,13 +502,6 @@ RT.beforeEach((to, from, next) => {
         name: 'login'
       })
     }
-  }
-  if (store.getters['room/getGroups'].length == 0 && localStorage.getItem('Auth-Token') != undefined && localStorage.getItem('Auth-Token') != null) {
-    axios.get(`http://localhost:3000/users/groups`).then(data => {
-      store.commit('room/setGroups', data.data.groups)
-    }).catch(err => {
-      console.log(err)
-    })
   }
 })
 RT.afterEach((to, from) => {
@@ -509,7 +533,6 @@ function checkLogined (callBack,next) {
 function getInforUser (next) {
   axios.get('http://localhost:3000/users/info').then(data => {
     store.commit('setUser', data.data)
-    next()
   }).catch(err => {
     console.log(err)
     RT.push({name: 'login'})

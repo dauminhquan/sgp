@@ -19,16 +19,46 @@ new Vue({
   computed: {
     groups () {
       return this.$store.getters['room/getGroups']
-    }
+    },
+      messageReaded() {
+      return this.$socket.getters['room/getMessageReaded']
+      }
   },
   watch: {
     groups (newValue, oldValue) {
-      if (oldValue != null && oldValue != undefined) {
-        if (oldValue.length > 0) {
-          oldValue.forEach(item => {
-            this.$socket.removeAllListeners('change_group_' + item._id)
+      if(oldValue.length > newValue.length)
+      {
+         // xóa đi 1 group
+          let deleteGroup = null
+          oldValue.forEach(del => {
+              if(!newValue.some(function (item) {
+                  return del._id == item._id
+              }))
+              {
+                deleteGroup = del
+              }
+                  })
+          if(deleteGroup != null)
+          {
+              this.$socket.off('chanel-group-' + deleteGroup._id)
+          }
+      }
+      else{
+          let addGroup = null
+          newValue.forEach(add => {
+              if(!oldValue.some(function (item) {
+                  return add._id == item._id
+              }))
+              {
+                  addGroup = add
+              }
           })
-        }
+          if(addGroup != null)
+          {
+              this.$socket.on('chanel-group-' + addGroup._id,function (data) {
+                  console.log(data)
+              })
+          }
       }
     }
   },

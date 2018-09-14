@@ -33153,7 +33153,7 @@ thead .htCollapseButton:after {
  * ---------------------------------------------------------------------------- */
 .chat-list,
 .chat-stacked {
-  max-height: 520px;
+  height: 520px;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }

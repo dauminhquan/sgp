@@ -13,25 +13,9 @@
                 <div class="category-content">
                     <form action="#">
                         <div class="has-feedback has-feedback-left">
-                            <input type="search" v-model="idSearch" class="form-control" placeholder="#id hoặc @name người dùng">
+                            <input type="search" class="form-control" placeholder="#id hoặc @name người dùng">
                             <div class="form-control-feedback">
                                 <i class="icon-search4 text-size-base text-muted"></i>
-                            </div>
-                        </div>
-                        <div class="popover fade top in pop-search-user" v-if="idSearch != null && idSearch != ''">
-                            <div>
-                                <ul class="navigation">
-                                    <li v-for="member in members" :key="member.id">
-                                        <a :href="null">
-                                            <div class="media-left">
-                                                <img :src="member.avatar" class="img-circle" alt="">
-                                            </div>
-                                            <div class="media-body">
-                                                {{member.username}}
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     </form>
@@ -53,27 +37,45 @@
                         <li><a :href="null" @click="showModalChatBots"><i class="icon-compose"></i> Chat boot</a></li>
                         <li>
                             <a :href="null" @click="clickAddUser"><i class="icon-user-plus"></i> Thêm thành viên</a>
-                            <ul v-if="subMenuAddUser == true">
-                                <li>
-                                    <div class="input-group form-control sub-menu-2-input-group">
-                                        <input type="text" class="form-control" placeholder="Nhập Id người dùng">
-                                        <span class="input-group-btn">
-                                            <button class="btn bg-info" type="button"><i class="icon-user-plus"></i></button>
+                            <form @submit.prevent="addMemberToGroup">
+                                <ul v-show="subMenuAddUser == true">
+                                    <li>
+                                        <div class="input-group form-control sub-menu-2-input-group">
+                                            <input type="text" v-model="idSearch" required class="form-control" placeholder="Nhập Id người dùng">
+                                            <span class="input-group-btn">
+                                            <button class="btn bg-info" type="submit"><i class="icon-user-plus"></i></button>
                                         </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="popover fade top in pop-search-user" v-if="showSearchMem">
+                                    <div>
+                                        <ul class="navigation">
+                                            <li v-for="member in membersOfCompany" :key="member.id">
+                                                <a :href="null" :title="'#'+member.id" @click="selectAddMemberToGroup(member.id)">
+                                                    <div class="media-left">
+                                                        <img :src="member.avatar" class="img-circle" alt="">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        {{member.username}}
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </form>
                         </li>
                         <li><a :href="null" @click="showModalCreate"><i class="icon-users"></i> Tạo mới nhóm chat</a></li>
                         <li><a :href="null" @click="showModalGetOutGroupChat"><i class="glyphicon glyphicon-log-out"></i> Thoát khỏi nhóm chat</a></li>
                         <li class="navigation-divider"></li>
                         <li><a :href="null" @click="showListUserRequire = !showListUserRequire"><i class="icon-file-plus"></i> Yêu cầu vào nhóm chat <span class="badge badge-danger">32</span></a>
-                            <span :class="showListUserRequire == false?'navigation menu-scollbar hide-menu-user-require' : 'navigation menu-scollbar show-menu-user-require'">
+                            <ul class="navigation menu-scollbar">
                                 <div class="pop-users-request-content">
                                     <li v-for="user in usersRequest" :key="user.id">
                                         <div class="pop-users-request-item">
                                             <div class="media-left">
-                                                <img :src="user.avatar" title="#12345" class="img-circle" alt="">
+                                                <img :src="user.avatar" :title="'#'+ user.id" class="img-circle" alt="">
                                             </div>
                                             <div class="media-body pop-users-request-body" title="#12345">
                                                 @{{user.name}} <button class="btn btn-link text-danger" @click="notAcceptJoin(user.id)"><i class="fa fa-close"></i></button> <button class="btn btn-link text-success" @click="acceptJoin(user.id)"><i class="fa fa-check"></i></button>
@@ -81,7 +83,7 @@
                                         </div>
                                     </li>
                                 </div>
-                            </span>
+                            </ul>
                         </li>
                         <li><a :href="null" @click="showCloseGroupModal"><i class="icon-file-locked"></i> Đóng nhóm chat</a></li>
                         <li><a :href="null" @click="showDeleteGroupModal"><i class="icon-trash"></i> Xóa nhóm chat</a></li>
@@ -278,27 +280,27 @@
                 </div>
             </div>
         </div>
-    <div id="modal-get-out-group-chat" class="modal fade">
-        <div class="modal-dialog">
-            <form @submit.prevent="getOutGroupChat">
-                <div class="modal-content">
-                    <div class="modal-header bg-warning-400">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h6 class="modal-title"><i class="fa fa-warning"></i> Lưu ý</h6>
-                    </div>
+        <div id="modal-get-out-group-chat" class="modal fade">
+            <div class="modal-dialog">
+                <form @submit.prevent="getOutGroupChat">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning-400">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h6 class="modal-title"><i class="fa fa-warning"></i> Lưu ý</h6>
+                        </div>
 
-                    <div class="modal-body">
-                        <p>Bạn chắc chắn chứ.</p>
-                    </div>
+                        <div class="modal-body">
+                            <p>Bạn chắc chắn chứ.</p>
+                        </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-warning">Rời nhóm</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-warning">Rời nhóm</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
         <div id="modal-delete-group" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -398,202 +400,281 @@
     </div>
 </template>
 <script>
-import $ from 'jquery'
-import axios from './../../../axios'
-import PNotify from 'pnotify/dist/es/PNotifyCompat'
-export default {
-  computed: {
-    _groupId () {
-      let vm = this
-      let group = vm.$store.getters['room/getGroups'].find(item => {
-        return item.id == vm.$route.params.id
-      })
-      if (group != undefined) {
-        return group._id
-      }
-      return null
-    },
-    members () {
-      let vm = this
-      let user = vm.$store.getters.getUser
-      let group = vm.$store.getters['room/getGroups'].find(item => {
-        return item.id == vm.$route.params.id
-      })
-      if (group != undefined) {
-        return group.members.filter(mem => {
-          return mem.id != user.id
-        })
-      }
-      return []
-    }
-  },
-  watch: {
-    newGroupName (name) {
-      if (name === '@') {
+    import $ from 'jquery'
+    import axios from './../../../axios'
+    import PNotify from 'pnotify/dist/es/PNotifyCompat'
+    export default {
+        computed: {
+            _groupId () {
+                let vm = this
+                let group = vm.$store.getters['room/getGroups'].find(item => {
+                    return item.id == vm.$route.params.id
+                })
+                if (group != undefined) {
+                    return group._id
+                }
+                return null
+            },
+            members () {
+                let vm = this
+                let user = vm.$store.getters.getUser
+                let group = vm.$store.getters['room/getGroups'].find(item => {
+                    return item.id == vm.$route.params.id
+                })
+                if (group != undefined) {
+                    return group.members.filter(mem => {
+                        return mem.id != user.id
+                    })
+                }
+                return []
+            },
+            membersOfCompany(){
+                let vm = this
 
-      }
-    },
-    idSearch (query) {
+                if(vm.idSearch.length > 0)
+                {
+                    let userId = vm.$store.getters.getUser.id
+                    let tag = vm.idSearch[0]
+                    let userName = vm.idSearch.slice(1)
+                    return vm.$store.getters.getCompanyMembers.filter(mem => {
+                        return mem.id != userId && ((tag == '@' && mem.username.includes(userName)) || ((tag == '#' && mem.id.toString().includes(userName)))) && !vm.members.some(item => {
+                            return item.id == mem.id
+                        })
+                    })
+                }
+                return []
 
-    }
-  },
-  data () {
-    return {
-      showListUserRequire: false,
-      subMenuAddUser: false,
-      newGroupName: null,
-      usersRequest: [
-        {
-          id: 1,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+            }
         },
-        {
-          id: 2,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        watch: {
+            idSearch (query) {
+                let vm = this
+                if(query != null)
+                {
+                    if(query[0] == '#' || query[0] == '@')
+                    {
+                        let id = query.slice(1)
+                        let mem = vm.membersOfCompany.find(mem => {
+                            return mem.id == id
+                        })
+                        if((mem == undefined || mem == null) && id !='')
+                        {
+                            vm.showSearchMem = false
+                        }
+                        else{
+                            if(vm.membersOfCompany.length > 0)
+                            {
+                                vm.showSearchMem = true
+                            }
+                            else{
+                                vm.showSearchMem = false
+                            }
+                        }
+                    }else{
+                        vm.showSearchMem = false
+                    }
+                }
+                else{
+                    vm.showSearchMem = false
+                }
+            }
         },
-        {
-          id: 3,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        data () {
+            return {
+                showListUserRequire: false,
+                subMenuAddUser: false,
+                newGroupName: null,
+                usersRequest: [
+                    {
+                        id: 1,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 2,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 3,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 4,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 5,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 6,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    },
+                    {
+                        id: 7,
+                        name: 'Cường Đào',
+                        avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+                    }
+                ],
+                idSearch: null,
+                showSearchMem : false
+            }
         },
-        {
-          id: 4,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        methods: {
+            clickAddUser () {
+                this.subMenuAddUser = !this.subMenuAddUser
+            },
+            showModalCreate () {
+                $('#modal-create-group').modal('show')
+            },
+            showModalGetOutGroupChat () {
+                $('#modal-get-out-group-chat').modal('show')
+            },
+            showCloseGroupModal () {
+                $('#modal-close-group').modal('show')
+            },
+            showDeleteGroupModal () {
+                $('#modal-delete-group').modal('show')
+            },
+            showModalChatBots () {
+                $('#modal-chat-bots').modal('show')
+            },
+            forcusInputNewGroupName () {
+                let vm = this
+                setTimeout(function () {
+                    $(vm.$refs['input-new-group-name']).popover('hide')
+                }, 4000)
+            },
+            notAcceptJoin (id) {
+                let vm = this
+                vm.usersRequest = vm.usersRequest.filter(item => {
+                    return item.id !== id
+                })
+            },
+            acceptJoin (id) {
+                let vm = this
+                vm.usersRequest = vm.usersRequest.filter(item => {
+                    return item.id !== id
+                })
+            },
+            createGroup () {
+                let vm = this
+                axios.post('http://localhost:3000/groups', {
+                    name: vm.newGroupName
+                }).then(data => {
+                    $('#modal-create-group').modal('hide')
+                    PNotify.notice({
+                        title: 'Thành công',
+                        text: 'Tạo nhóm chát thành công.',
+                        icon: 'icon-success',
+                        addClass: 'bg-success',
+                        text_escape: true
+                    })
+                    vm.$router.push({
+                        name: 'chat-team',
+                        params: {
+                            id: data.data.id
+                        }
+                    })
+                    vm.newGroupName = null
+                    axios.get(`http://localhost:3000/users/groups`).then(dt => {
+                        vm.$store.commit('room/setGroups', dt.data.groups)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }).catch(err => {
+                    console.log(err)
+                    PNotify.notice({
+                        title: 'Thất bại',
+                        text: 'Đã có lỗi xảy ra.',
+                        icon: 'icon-warning',
+                        addClass: 'bg-danger-400',
+                        text_escape: true
+                    })
+                })
+            },
+            getOutGroupChat () {
+                let vm = this
+                axios.post(`http://localhost:3000/groups/get-out/${vm.$route.params.id}`).then(data => {
+                    $('#modal-get-out-group-chat').modal('hide')
+                    PNotify.notice({
+                        title: 'Thành công',
+                        text: 'Rời khỏi nhóm chat thành công.',
+                        icon: 'icon-success',
+                        addClass: 'bg-success',
+                        text_escape: true
+                    })
+                    vm.$router.push({
+                        name: 'home'
+                    })
+                    vm.newGroupName = null
+                    axios.get(`http://localhost:3000/users/groups`).then(dt => {
+                        vm.$store.commit('room/setGroups', dt.data.groups)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }).catch(err => {
+                    console.log(err)
+                    PNotify.notice({
+                        title: 'Thất bại',
+                        text: 'Đã có lỗi xảy ra.',
+                        icon: 'icon-warning',
+                        addClass: 'bg-danger-400',
+                        text_escape: true
+                    })
+                })
+            },
+            selectAddMemberToGroup(id){
+                let vm = this
+                let mem = this.membersOfCompany.find(mem => {
+                    return mem.id == id
+                })
+                vm.idSearch = '#'+mem.id
+            },
+            addMemberToGroup(){
+                let vm = this
+                let id = vm.idSearch.slice(1)
+                let mem = vm.membersOfCompany.find(mem => {
+                    return mem.id == id
+                })
+                if(mem != undefined)
+                {
+                    axios.put(`http://localhost:3000/groups/info/${vm.$route.params.id}/add-member/${id}`).then(data => {
+                        let groups = vm.$store.getters['room/getGroups'].map(item => {
+                            if(item.id == vm.$route.params.id)
+                            {
+                                item.members.push(mem)
+                            }
+                            return item
+                        })
+                        vm.$store.commit('room/setGroups',groups)
+                        vm.idSearch = null
+                        vm.showSearchMem = false
+                    }).catch(err => {
+                        console.log(err)
+                        PNotify.notice({
+                            title: 'Thất bại',
+                            text: 'Đã có lỗi xảy ra.',
+                            icon: 'icon-warning',
+                            addClass: 'bg-danger-400',
+                            text_escape: true
+                        })
+                    })
+                }
+            }
         },
-        {
-          id: 5,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 6,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
-        },
-        {
-          id: 7,
-          name: 'Cường Đào',
-          avatar: 'https://scontent.fhan2-4.fna.fbcdn.net/v/t1.0-1/p50x50/30713129_221639121917111_2265048069710760037_n.jpg?_nc_cat=0&oh=ef29b1adabb59cb6e620eaa19e817ee7&oe=5BFF3C02'
+        mounted () {
+            let vm = this
+            $(vm.$refs['input-new-group-name']).popover({
+                template: '<div class="popover "' + $(vm.$refs['input-new-group-name']).attr('popover-title') + '"><div class="arrow"></div><h3 class="popover-title bg-teal-400">' + $(vm.$refs['input-new-group-name']).attr('title') + '</h3><div class="popover-content"></div></div>'
+            })
         }
-      ],
-      idSearch: null
     }
-  },
-  methods: {
-    clickAddUser () {
-      this.subMenuAddUser = !this.subMenuAddUser
-    },
-    showModalCreate () {
-      $('#modal-create-group').modal('show')
-    },
-    showModalGetOutGroupChat () {
-      $('#modal-get-out-group-chat').modal('show')
-    },
-    showCloseGroupModal () {
-      $('#modal-close-group').modal('show')
-    },
-    showDeleteGroupModal () {
-      $('#modal-delete-group').modal('show')
-    },
-    showModalChatBots () {
-      $('#modal-chat-bots').modal('show')
-    },
-    forcusInputNewGroupName () {
-      let vm = this
-      setTimeout(function () {
-        $(vm.$refs['input-new-group-name']).popover('hide')
-      }, 4000)
-    },
-    notAcceptJoin (id) {
-      let vm = this
-      vm.usersRequest = vm.usersRequest.filter(item => {
-        return item.id !== id
-      })
-    },
-    acceptJoin (id) {
-      let vm = this
-      vm.usersRequest = vm.usersRequest.filter(item => {
-        return item.id !== id
-      })
-    },
-    createGroup () {
-      let vm = this
-      axios.post('http://localhost:3000/groups', {
-        name: vm.newGroupName
-      }).then(data => {
-        $('#modal-create-group').modal('hide')
-        PNotify.notice({
-          title: 'Thành công',
-          text: 'Tạo nhóm chát thành công.',
-          icon: 'icon-success',
-          addClass: 'bg-success',
-          text_escape: true
-        })
-        vm.$router.push({
-          name: 'chat-team',
-          params: {
-            id: data.data.id
-          }
-        })
-        vm.newGroupName = null
-        axios.get(`http://localhost:3000/users/groups`).then(dt => {
-          vm.$store.commit('room/setGroups', dt.data.groups)
-        }).catch(err => {
-          console.log(err)
-        })
-      }).catch(err => {
-        console.log(err)
-        PNotify.notice({
-          title: 'Thất bại',
-          text: 'Đã có lỗi xảy ra.',
-          icon: 'icon-warning',
-          addClass: 'bg-danger-400',
-          text_escape: true
-        })
-      })
-    },
-    getOutGroupChat () {
-      let vm = this
-      axios.post(`http://localhost:3000/groups/get-out/${vm.$route.params.id}`).then(data => {
-        $('#modal-get-out-group-chat').modal('hide')
-        PNotify.notice({
-          title: 'Thành công',
-          text: 'Rời khỏi nhóm chat thành công.',
-          icon: 'icon-success',
-          addClass: 'bg-success',
-          text_escape: true
-        })
-        vm.$router.push({
-          name: 'home'
-        })
-        vm.newGroupName = null
-        axios.get(`http://localhost:3000/users/groups`).then(dt => {
-          vm.$store.commit('room/setGroups', dt.data.groups)
-        }).catch(err => {
-          console.log(err)
-        })
-      }).catch(err => {
-        console.log(err)
-        PNotify.notice({
-          title: 'Thất bại',
-          text: 'Đã có lỗi xảy ra.',
-          icon: 'icon-warning',
-          addClass: 'bg-danger-400',
-          text_escape: true
-        })
-      })
-    }
-  },
-  mounted () {
-    let vm = this
-    $(vm.$refs['input-new-group-name']).popover({
-      template: '<div class="popover "' + $(vm.$refs['input-new-group-name']).attr('popover-title') + '"><div class="arrow"></div><h3 class="popover-title bg-teal-400">' + $(vm.$refs['input-new-group-name']).attr('title') + '</h3><div class="popover-content"></div></div>'
-    })
-  }
-}
 </script>
 <style>
     .sub-menu-2-input-group{
@@ -649,11 +730,20 @@ export default {
     }
     .pop-search-user{
         display: block;
-        top: 65px;
-        left: 20px;
+        top: 95px;
+        left: 12px;
         max-height: 200px;
         overflow: scroll;
         overflow-x: hidden;
+    }
+    .pop-search-user a{
+        padding-left: 11px !important;
+    }
+    .pop-search-user a:hover{
+        background-color: rgba(57,26,99,0.59) !important;
+    }
+    .pop-search-user .media-body{
+        line-height: 40px;
     }
     .pop-search-user::-webkit-scrollbar {
         width: 5px;
